@@ -37,7 +37,7 @@ const CreateNewContent = (props: PROPS) => {
       }
 
       const selectedPrompt = selectedTemplate?.aiPrompt;
-      const finalAIPrompt = JSON.stringify(FormData) + ", " + selectedPrompt;
+      const finalAIPrompt = JSON.stringify(formData) + ", " + selectedPrompt;
       const result = await chatSession.sendMessage(finalAIPrompt);
       setAiOutput(result?.response.text());
       await saveInDb(formData, selectedTemplate?.slug, result?.response.text());
@@ -50,7 +50,7 @@ const CreateNewContent = (props: PROPS) => {
 
   const saveInDb = async (formData: string, slug: any, aiRes: string) => {
     if (!user?.primaryEmailAddress?.emailAddress) {
-      throw new Error("User email is required");
+      throw new Error("User email is required!!");
     }
 
     try {
@@ -59,7 +59,7 @@ const CreateNewContent = (props: PROPS) => {
         templateSlug: slug,
         aiResponse: aiRes,
         createdBy: user.primaryEmailAddress.emailAddress,
-        createdAt: moment().format("YYYY-MM-DD"),
+        createdAt: moment().format("DD-MM-YYYY"),
       });
       console.log(result);
     } catch (error) {

@@ -2,14 +2,16 @@
 import { db } from "@/utils/db";
 import { AIOutput } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
+import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const page = () => {
+const history = () => {
   const [historyData, setHistoryData] = useState<any>([]);
   const { user } = useUser();
+  const param = useSearchParams();
 
   const formatTemplateSlug = (slug: any) => {
     const whitespaceRemoved = slug.replace(/-/g, " ");
@@ -33,26 +35,32 @@ const page = () => {
     );
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      // if (!user?.primaryEmailAddress?.emailAddress) {
-      //   throw new Error("User email is required");
-      // }
-      const data = await db
-        .select()
-        .from(AIOutput)
-        .where(
-          eq(AIOutput?.createdBy, user?.primaryEmailAddress?.emailAddress || "")
-        );
-      setHistoryData(data);
-      try {
-      } catch (error) {
-        console.log("Error in fetching the Data", error);
-      }
-    };
+  const fetchData = async () => {
+    // if (!user?.primaryEmailAddress?.emailAddress) {
+    //   throw new Error("User email is required");
+    // }
+    const data = await db
+      .select()
+      .from(AIOutput)
+      .where(
+        eq(AIOutput?.createdBy, user?.primaryEmailAddress?.emailAddress || "")
+      )
+      .orderBy(desc(AIOutput?.createdAt));
 
-    fetchData();
-  }, [user]);
+    setHistoryData(data);
+    try {
+    } catch (error) {
+      console.log("Error in fetching the Data", error);
+    }
+  };
+
+  useEffect(() => {
+    if (param.get("load") === "load") {
+      fetchData();
+    }
+  }, [param]);
+
+  fetchData();
 
   return (
     <div className="m-5 bg-white p-5">
@@ -65,7 +73,7 @@ const page = () => {
         <div>COPY</div>
       </div>
       {historyData.map((item: any, index: number) => (
-        <div className="grid grid-cols-5 gap-10 p-2 py-5">
+        <div className="grid grid-cols-5 gap-10 p-2 py-5" key={index}>
           <div>
             <p>{formatTemplateSlug(item.templateSlug)}</p>
           </div>
@@ -82,12 +90,12 @@ const page = () => {
             >
               COPY
             </button>
-            <ToastContainer />
           </div>
         </div>
       ))}
+      <ToastContainer />
     </div>
   );
 };
 
-export default page;
+export default history;

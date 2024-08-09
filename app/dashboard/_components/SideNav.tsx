@@ -15,7 +15,7 @@ const SideNav = () => {
     {
       name: "History",
       icon: FileClock,
-      path: "/dashboard/history",
+      path: "/dashboard/history?load=true",
     },
     {
       name: "Billing",

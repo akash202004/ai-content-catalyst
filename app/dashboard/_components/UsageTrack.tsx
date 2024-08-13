@@ -4,38 +4,44 @@ import { db } from "@/utils/db";
 import { AIOutput } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
 import { eq } from "drizzle-orm";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const UsageTrack = () => {
   const { user } = useUser();
+  const redirect = useRouter();
   const [result, setResult] = useState<any>([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (user?.primaryEmailAddress?.emailAddress) {
-        const resultData = await db
-          .select()
-          .from(AIOutput)
-          .where(eq(AIOutput.createdAt, user.primaryEmailAddress.emailAddress));
-        setResult(resultData);
-      }
-    };
-    fetchData();
-  }, [user]);
-
-  const getTotalUsage = () => {
-    let total: number = 0;
-    result.forEach((element: any) => {
-      total = total + Number(element.aiResponse?.length || 0);
-    });
-    console.log(total);
+  const handleClick = () => {
+    redirect.push("/dashboard/billing");
   };
 
-  useEffect(() => {
-    if (result.length > 0) {
-      getTotalUsage();
-    }
-  }, [result]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     if (user?.primaryEmailAddress?.emailAddress) {
+  //       const resultData = await db
+  //         .select()
+  //         .from(AIOutput)
+  //         .where(eq(AIOutput.createdAt, user.primaryEmailAddress.emailAddress));
+  //       setResult(resultData);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+
+  // const getTotalUsage = () => {
+  //   let total: number = 0;
+  //   result.forEach((element: any) => {
+  //     total = total + Number(element.aiResponse?.length || 0);
+  //   });
+  //   console.log(total);
+  // };
+
+  // useEffect(() => {
+  //   if (result.length > 0) {
+  //     getTotalUsage();
+  //   }
+  // }, [result]);
 
   return (
     <div className="m-5">
@@ -52,6 +58,7 @@ const UsageTrack = () => {
       <Button
         variant={"outline"}
         className="w-full my-3 text-primary font-bold border-black"
+        onClick={handleClick}
       >
         Upgrade
       </Button>

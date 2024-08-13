@@ -3,22 +3,21 @@ import { Button } from "@/components/ui/button";
 import { Cover } from "@/components/ui/cover";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import Image from "next/image";
-import { LampContainer } from "@/components/ui/lamp";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { FlipWords } from "@/components/ui/flip-words";
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
+import { Boxes } from "@/components/ui/background-boxes";
 import {
   BookOpen,
   CupSoda,
-  Github,
-  Instagram,
   LayoutTemplate,
-  Linkedin,
   MessageCircleDashed,
 } from "lucide-react";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
   const redirect = useRouter();
@@ -284,6 +283,28 @@ export default function Home() {
             colors={[[125, 211, 252]]}
           />
         </Card>
+      </div>
+      <div className=" mt-20 h-44 font-bold relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center rounded-lg">
+        <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+
+        <Boxes />
+        <h1
+          className={cn(
+            "md:text-[50px] text-xl relative z-20 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-slate-300 "
+          )}
+        >
+          Akash Laha
+        </h1>
+        <div className="flex justify-center items-center gap-10 mt-1">
+          <p className="text-center mt-2 text-neutral-300 relative z-20">
+            <Link href={"https://www.linkedin.com/in/akash-laha-799427244/"}>
+              @LinkedIn
+            </Link>
+          </p>
+          <p className="text-center mt-2 text-neutral-300 relative z-20">
+            <Link href={"https://github.com/akash202004"}>@Github</Link>
+          </p>
+        </div>
       </div>
     </div>
   );

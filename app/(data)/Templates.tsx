@@ -354,4 +354,406 @@ export default [
       },
     ],
   },
+  {
+    name: "LinkedIn Headline Generator",
+    desc: "Generate professional and impactful LinkedIn headlines that boost your profile visibility and network connections.",
+    icon: "https://cdn-icons-png.flaticon.com/128/1384/1384046.png",
+    category: "Professional Networking",
+    slug: "linkedin-headline-generator",
+    aiPrompt:
+      "Based on the provided professional background and career goals, generate a LinkedIn headline. Output in plain text.",
+    form: [
+      {
+        label: "Professional Background",
+        field: "input",
+        name: "background",
+        required: true,
+      },
+      {
+        label: "Career Goals",
+        field: "input",
+        name: "careerGoals",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "User Testimonial Generator",
+    desc: "Create authentic and impactful user testimonials that build trust and credibility for your brand.",
+    icon: "https://cdn-icons-png.flaticon.com/128/149/149070.png",
+    category: "Branding",
+    slug: "user-testimonial-generator",
+    aiPrompt:
+      "Based on the user experience and feedback provided, generate a user testimonial. Output in plain text.",
+    form: [
+      {
+        label: "User Experience",
+        field: "textarea",
+        name: "userExperience",
+        required: true,
+      },
+      {
+        label: "Key Feedback Points",
+        field: "textarea",
+        name: "keyFeedback",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Event Invitation Generator",
+    desc: "Design compelling event invitations that encourage high attendance and engagement.",
+    icon: "https://cdn-icons-png.flaticon.com/128/189/189101.png",
+    category: "Event Planning",
+    slug: "event-invitation-generator",
+    aiPrompt:
+      "Based on the event type and details, generate an event invitation. Output in rich text editor format.",
+    form: [
+      {
+        label: "Event Type",
+        field: "input",
+        name: "eventType",
+        required: true,
+      },
+      {
+        label: "Event Details",
+        field: "textarea",
+        name: "eventDetails",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Sales Pitch Generator",
+    desc: "Create persuasive sales pitches tailored to your product or service that resonate with your target audience.",
+    icon: "https://cdn-icons-png.flaticon.com/128/2079/2079540.png",
+    category: "Sales",
+    slug: "sales-pitch-generator",
+    aiPrompt:
+      "Based on the provided product/service and target audience, generate a sales pitch. Output in plain text.",
+    form: [
+      {
+        label: "Product/Service",
+        field: "input",
+        name: "productService",
+        required: true,
+      },
+      {
+        label: "Target Audience",
+        field: "input",
+        name: "targetAudience",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Newsletter Content Generator",
+    desc: "Generate engaging content for your newsletters, including articles, announcements, and special offers.",
+    icon: "https://cdn-icons-png.flaticon.com/128/1534/1534961.png",
+    category: "Email Marketing",
+    slug: "newsletter-content-generator",
+    aiPrompt:
+      "Based on the provided theme and key points, generate newsletter content. Output in rich text editor format.",
+    form: [
+      {
+        label: "Newsletter Theme",
+        field: "input",
+        name: "theme",
+        required: true,
+      },
+      {
+        label: "Key Points",
+        field: "textarea",
+        name: "keyPoints",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Ad Copy Generator",
+    desc: "Create compelling and high-converting ad copy for various platforms like Google Ads, Facebook Ads, and more.",
+    icon: "https://cdn-icons-png.flaticon.com/128/1055/1055674.png",
+    category: "Advertising",
+    slug: "ad-copy-generator",
+    aiPrompt:
+      "Based on the provided product or service and target audience, generate ad copy optimized for the selected platform. Output in rich text editor format.",
+    form: [
+      {
+        label: "Platform",
+        field: "input",
+        name: "platform",
+        required: true,
+      },
+      {
+        label: "Product/Service",
+        field: "input",
+        name: "productService",
+        required: true,
+      },
+      {
+        label: "Target Audience",
+        field: "input",
+        name: "targetAudience",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Customer Review Response Generator",
+    desc: "Generate polite and professional responses to customer reviews to maintain a positive brand image.",
+    icon: "https://cdn-icons-png.flaticon.com/128/2920/2920075.png",
+    category: "Customer Service",
+    slug: "customer-review-response-generator",
+    aiPrompt:
+      "Based on the customer review and the sentiment (positive, neutral, negative), generate a response. Output in plain text.",
+    form: [
+      {
+        label: "Customer Review",
+        field: "textarea",
+        name: "customerReview",
+        required: true,
+      },
+      {
+        label: "Sentiment",
+        field: "input",
+        name: "sentiment",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Email Subject Line Generator",
+    desc: "Create attention-grabbing email subject lines that increase your open rates and improve email marketing success.",
+    icon: "https://cdn-icons-png.flaticon.com/128/126/126510.png",
+    category: "Email Marketing",
+    slug: "email-subject-line-generator",
+    aiPrompt:
+      "Based on the provided email content, generate an optimized subject line that is likely to boost open rates. Output in plain text.",
+    form: [
+      {
+        label: "Email Content",
+        field: "textarea",
+        name: "emailContent",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Social Media Post Generator",
+    desc: "Craft engaging and platform-specific social media posts that captivate your audience and increase engagement.",
+    icon: "https://cdn-icons-png.flaticon.com/128/102/102016.png",
+    category: "Social Media",
+    slug: "social-media-post-generator",
+    aiPrompt:
+      "Based on the platform (e.g., Facebook, Twitter, LinkedIn), generate a social media post using the provided topic and tone. Output in rich text editor format.",
+    form: [
+      {
+        label: "Platform",
+        field: "input",
+        name: "platform",
+        required: true,
+      },
+      {
+        label: "Post Topic",
+        field: "input",
+        name: "postTopic",
+        required: true,
+      },
+      {
+        label: "Tone (Ex: Casual, Professional, Humorous, Inspirational)",
+        field: "input",
+        name: "tone",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Press Release Generator",
+    desc: "Craft compelling press releases that attract media attention and effectively communicate your message.",
+    icon: "https://cdn-icons-png.flaticon.com/128/1000/1000918.png",
+    category: "Public Relations",
+    slug: "press-release-generator",
+    aiPrompt:
+      "Based on the provided event or announcement, generate a press release. Output in rich text editor format.",
+    form: [
+      {
+        label: "Event/Announcement",
+        field: "textarea",
+        name: "eventAnnouncement",
+        required: true,
+      },
+      {
+        label: "Key Details",
+        field: "textarea",
+        name: "keyDetails",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Survey Question Generator",
+    desc: "Create effective and targeted survey questions to gather valuable insights from your audience.",
+    icon: "https://cdn-icons-png.flaticon.com/128/2144/2144213.png",
+    category: "Market Research",
+    slug: "survey-question-generator",
+    aiPrompt:
+      "Based on the provided survey topic, generate relevant and insightful survey questions. Output in plain text.",
+    form: [
+      {
+        label: "Survey Topic",
+        field: "input",
+        name: "surveyTopic",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Customer Feedback Generator",
+    desc: "Generate structured and constructive feedback forms to help improve products and services.",
+    icon: "https://cdn-icons-png.flaticon.com/128/4294/4294076.png",
+    category: "Customer Service",
+    slug: "customer-feedback-generator",
+    aiPrompt:
+      "Based on the provided product or service, generate a feedback form with relevant questions. Output in plain text.",
+    form: [
+      {
+        label: "Product/Service",
+        field: "input",
+        name: "productService",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Product Naming Generator",
+    desc: "Create unique and memorable names for your products that resonate with your target audience.",
+    icon: "https://cdn-icons-png.flaticon.com/128/1256/1256165.png",
+    category: "Branding",
+    slug: "product-naming-generator",
+    aiPrompt:
+      "Based on the product description and target market, generate a list of potential product names. Output in plain text.",
+    form: [
+      {
+        label: "Product Description",
+        field: "textarea",
+        name: "productDescription",
+        required: true,
+      },
+      {
+        label: "Target Market",
+        field: "input",
+        name: "targetMarket",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Slogan Generator",
+    desc: "Generate catchy and memorable slogans that effectively convey your brand’s message.",
+    icon: "https://cdn-icons-png.flaticon.com/128/1055/1055697.png",
+    category: "Branding",
+    slug: "slogan-generator",
+    aiPrompt:
+      "Based on the brand’s mission and core values, generate a catchy slogan. Output in plain text.",
+    form: [
+      {
+        label: "Brand Mission",
+        field: "textarea",
+        name: "brandMission",
+        required: true,
+      },
+      {
+        label: "Core Values",
+        field: "textarea",
+        name: "coreValues",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Content Outline Generator",
+    desc: "Create detailed and structured content outlines for blogs, articles, or reports.",
+    icon: "https://cdn-icons-png.flaticon.com/128/1097/1097073.png",
+    category: "Content Creation",
+    slug: "content-outline-generator",
+    aiPrompt:
+      "Based on the provided topic and key points, generate a content outline. Output in plain text.",
+    form: [
+      {
+        label: "Topic",
+        field: "input",
+        name: "topic",
+        required: true,
+      },
+      {
+        label: "Key Points",
+        field: "textarea",
+        name: "keyPoints",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Product Feature List Generator",
+    desc: "Generate a detailed and compelling list of product features that highlight its value and benefits.",
+    icon: "https://cdn-icons-png.flaticon.com/128/1161/1161833.png",
+    category: "E-commerce",
+    slug: "product-feature-list-generator",
+    aiPrompt:
+      "Based on the provided product description, generate a list of key features and benefits. Output in plain text.",
+    form: [
+      {
+        label: "Product Description",
+        field: "textarea",
+        name: "productDescription",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Quora Answer Generator",
+    desc: "Generate thoughtful and informative answers to Quora questions to build your online presence and authority.",
+    icon: "https://cdn-icons-png.flaticon.com/128/888/888879.png",
+    category: "Content Creation",
+    slug: "quora-answer-generator",
+    aiPrompt:
+      "Based on the provided question and context, generate a well-researched answer. Output in plain text.",
+    form: [
+      {
+        label: "Question",
+        field: "textarea",
+        name: "question",
+        required: true,
+      },
+      {
+        label: "Context",
+        field: "textarea",
+        name: "context",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Podcast Episode Description Generator",
+    desc: "Generate engaging and informative descriptions for your podcast episodes to attract listeners.",
+    icon: "https://cdn-icons-png.flaticon.com/128/1642/1642588.png",
+    category: "Content Creation",
+    slug: "podcast-episode-description-generator",
+    aiPrompt:
+      "Based on the provided episode title and key points, generate a description for the podcast episode. Output in plain text.",
+    form: [
+      {
+        label: "Episode Title",
+        field: "input",
+        name: "episodeTitle",
+        required: true,
+      },
+      {
+        label: "Key Points",
+        field: "textarea",
+        name: "keyPoints",
+        required: true,
+      },
+    ],
+  },
 ];

@@ -74,10 +74,10 @@ const history = () => {
       </div>
       {historyData.map((item: any, index: number) => (
         <div
-          className="grid grid-cols-5 gap-10 p-2 py-5 border-b-2 font-semibold"
+          className="grid grid-cols-5 gap-10 p-2 py-5 border-b-2"
           key={index}
         >
-          <div>
+          <div className="font-semibold">
             <p>{formatTemplateSlug(item.templateSlug)}</p>
           </div>
           <div className="line-clamp-4 col-span-2">

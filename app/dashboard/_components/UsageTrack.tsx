@@ -7,41 +7,52 @@ import { eq } from "drizzle-orm";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
+interface HISTORY {
+  id: number;
+  formData: string;
+  aiResponse: string;
+  templateSlug: string;
+  createdBy: string;
+  createdAt: string;
+}
+
 const UsageTrack = () => {
   const { user } = useUser();
   const redirect = useRouter();
-  const [result, setResult] = useState<any>([]);
+  const [totalUsed, setTotalUsed] = useState<number>(0);
 
   const handleClick = () => {
     redirect.push("/dashboard/billing");
   };
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     if (user?.primaryEmailAddress?.emailAddress) {
-  //       const resultData = await db
-  //         .select()
-  //         .from(AIOutput)
-  //         .where(eq(AIOutput.createdAt, user.primaryEmailAddress.emailAddress));
-  //       setResult(resultData);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    user && getData();
+  }, [user]);
 
-  // const getTotalUsage = () => {
-  //   let total: number = 0;
-  //   result.forEach((element: any) => {
-  //     total = total + Number(element.aiResponse?.length || 0);
-  //   });
-  //   console.log(total);
-  // };
+  const getData = async () => {
+    try {
+      const result: HISTORY[] = await db
+        .select()
+        .from(AIOutput)
+        .where(
+          eq(AIOutput.createdAt, user?.primaryEmailAddress?.emailAddress || "")
+        );
 
-  // useEffect(() => {
-  //   if (result.length > 0) {
-  //     getTotalUsage();
-  //   }
-  // }, [result]);
+      getTotalUsage(result);
+      console.log(result);
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
+  };
+
+  const getTotalUsage = (result: HISTORY[]) => {
+    let total: number = 0;
+    result.forEach((element) => {
+      total = total + Number(element.aiResponse?.length);
+    });
+    console.log(total);
+    setTotalUsed(total);
+  };
 
   return (
     <div className="m-5">
@@ -50,10 +61,10 @@ const UsageTrack = () => {
         <div className="bg-[#b48bff] w-full rounded-full">
           <div
             className="h-2 bg-white rounded-full"
-            style={{ width: "35%" }}
+            style={{ width: (totalUsed / 10000) * 100 + "%" }}
           ></div>
         </div>
-        <h2 className="text-sm my-2">350/10,000 credit used</h2>
+        <h2 className="text-sm my-2">{totalUsed}/10,000 credit used</h2>
       </div>
       <Button
         variant={"outline"}

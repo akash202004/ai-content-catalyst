@@ -119,7 +119,7 @@ export default function Home() {
           Get Started
         </Button>
       </div>
-      <div className="flex items-center justify-center flex-col h-screen ">
+      <div className="flex items-center justify-center flex-col h-screen relative">
         <h1 className="text-4xl font-bold md:text-4xl lg:text-6xl max-w-7xl mx-auto text-center relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
           Transform Ideas into <span className="text-primary">Engaging</span>{" "}
           <br />
@@ -284,13 +284,13 @@ export default function Home() {
           />
         </Card>
       </div>
-      <div className=" mt-20 h-44 font-bold relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center rounded-lg">
+      <div className=" mt-20 h-44 font-bold relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center">
         <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
 
         <Boxes />
         <h1
           className={cn(
-            "md:text-[50px] text-xl relative z-20 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-slate-300 "
+            "md:text-[50px] text-xl relative z-20 bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-slate-200 "
           )}
         >
           Akash Laha

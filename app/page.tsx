@@ -121,9 +121,9 @@ export default function Home() {
       </div>
       <div className="flex items-center justify-center flex-col h-screen relative">
         <h1 className="text-4xl font-bold md:text-4xl lg:text-6xl max-w-7xl mx-auto text-center relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
-          Transform Ideas into <span className="text-primary">Engaging</span>{" "}
-          <br />
-          <Cover>Content Instantly </Cover>
+          Transform Ideas into Engaging{" "}
+          <span className="text-primary">Content</span> <br />
+          <Cover className="p-1">Content Catalyst </Cover>
         </h1>
         <p className="text-sm mt-5">
           Leverage the power of AI to create captivating content for blogs,

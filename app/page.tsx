@@ -114,7 +114,7 @@ export default function Home() {
   return (
     <div>
       <div className="flex items-center justify-between border-b-2 shadow-md p-3 px-10">
-        <Image src={"./Logo.svg"} alt="logo" height={100} width={100} />
+        <Image src={"./logo.svg"} alt="logo" height={100} width={100} />
         <Button onClick={handleButtonClick} variant={"outline"} className="p-6">
           Get Started
         </Button>

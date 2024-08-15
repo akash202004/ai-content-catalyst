@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import FormSection from "../_components/FormSection";
 import OutputSection from "../_components/OutputSection";
 import { TEMPLATE } from "../../_components/TemplateListSection";
@@ -12,6 +12,9 @@ import { db } from "@/utils/db";
 import { AIOutput } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment";
+import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
+import { toast } from "react-toastify";
+import { UpdateCredit } from "@/app/(context)/UpdateCredit";
 
 interface PROPS {
   params: {
@@ -22,6 +25,8 @@ interface PROPS {
 const CreateNewContent = (props: PROPS) => {
   const [loading, setLoading] = useState(false);
   const [aiOutput, setAiOutput] = useState<string>("");
+  const { totalUsage, setTotalUsage } = useContext(TotalUsageContext);
+  const { updateCredit, setUpdateCredit } = useContext(UpdateCredit);
   const { user } = useUser();
 
   const selectedTemplate: TEMPLATE | undefined = Templates?.find(
@@ -29,6 +34,11 @@ const CreateNewContent = (props: PROPS) => {
   );
 
   const generateAiContent = async (formData: any) => {
+    if (totalUsage >= 10000) {
+      toast.error("Your Free Credit Used Up! Upgrade for more...");
+      return;
+    }
+
     try {
       setLoading(true);
 
@@ -42,6 +52,7 @@ const CreateNewContent = (props: PROPS) => {
       setAiOutput(result?.response.text());
       await saveInDb(formData, selectedTemplate?.slug, result?.response.text());
       setLoading(false);
+      setUpdateCredit(Date.now());
     } catch (error) {
       console.log("Error in generating AI content", error);
       setLoading(true);

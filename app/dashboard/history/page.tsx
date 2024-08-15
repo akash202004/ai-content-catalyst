@@ -8,8 +8,17 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+export interface HISTORY {
+  id: number;
+  formData: string;
+  aiResponse: string | null;
+  templateSlug: string;
+  createdBy: string | null;
+  createdAt: string | null;
+}
+
 const history = () => {
-  const [historyData, setHistoryData] = useState<any>([]);
+  const [historyData, setHistoryData] = useState<HISTORY[]>([]);
   const { user } = useUser();
   const param = useSearchParams();
 
@@ -39,7 +48,7 @@ const history = () => {
     // if (!user?.primaryEmailAddress?.emailAddress) {
     //   throw new Error("User email is required");
     // }
-    const data = await db
+    const data: HISTORY[] = await db
       .select()
       .from(AIOutput)
       .where(

@@ -1,7 +1,13 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { useUser } from "@clerk/nextjs";
 import React, { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const billing = () => {
+  const { user } = useUser();
+  console.log(user);
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://checkout.razorpay.com/v1/checkout.js";
@@ -10,35 +16,39 @@ const billing = () => {
   }, []);
 
   const handlePayment = (amount: Number) => {
-    const options = {
-      key: "YOUR_RAZORPAY_KEY",
-      amount: Number(amount) * 100, // Amount in paise (100 paise = 1 INR)
-      currency: "INR",
-      name: "Your Company Name",
-      description: "Your Plan Description",
-      handler: function (response:any) {
-        console.log(response);
-        alert("Payment Successful");
-      },
-      prefill: {
-        name: "Customer Name",
-        email: "customer@example.com",
-        contact: "1234567890",
-      },
-      theme: {
-        color: "#F37254",
-      },
-    };
+    try {
+      const options = {
+        key: "YOUR_RAZORPAY_KEY",
+        amount: Number(amount) * 100, // Amount in paise (100 paise = 1 INR)
+        currency: "INR",
+        name: "Your Company Name",
+        description: "Your Plan Description",
+        handler: function (response: any) {
+          console.log(response);
+          toast.success("Payment Successful");
+        },
+        prefill: {
+          name: `${user?.fullName}`,
+          email: `${user?.primaryEmailAddress?.emailAddress}`,
+        },
+        theme: {
+          color: "#000000",
+        },
+      };
 
-    const script = document.createElement("script");
-    script.src = "https://checkout.razorpay.com/v1/checkout.js";
-    script.async = true;
-    document.body.appendChild(script);
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.async = true;
+      document.body.appendChild(script);
 
-    script.onload = () => {
-      const paymentObject = new (window as any).Razorpay(options);
-      paymentObject.open();
-    };
+      script.onload = () => {
+        const paymentObject = new (window as any).Razorpay(options);
+        paymentObject.open();
+      };
+    } catch (error) {
+      console.error("Error in payment process", error);
+      toast.error("Payment failed. Please try again.");
+    }
   };
 
   return (

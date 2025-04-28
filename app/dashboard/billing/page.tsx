@@ -1,5 +1,7 @@
 "use client";
 
+import { createRazorpayOrder } from "@/actions/createRazorpayOrder";
+import { verifyRazorpayOrder } from "@/actions/verifyRazorpayOrder";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@clerk/nextjs";
 import React, { useEffect } from "react";
@@ -15,17 +17,30 @@ const billing = () => {
     document.body.appendChild(script);
   }, []);
 
-  const handlePayment = (amount: Number) => {
+  const handlePayment = async (amount: number) => {
     try {
+      const order = await createRazorpayOrder(amount);
+
       const options = {
-        key: "YOUR_RAZORPAY_KEY",
-        amount: Number(amount) * 100, // Amount in paise (100 paise = 1 INR)
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
+        amount: order.amount,
         currency: "INR",
-        name: "Your Company Name",
-        description: "Your Plan Description",
-        handler: function (response: any) {
+        name: "Ai-Content-Catalyst",
+        description: "Make your content creation easy",
+        order_id: order.id,
+        handler: async function (response: any) {
           console.log(response);
-          toast.success("Payment Successful");
+          const isValid = await verifyRazorpayOrder({
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+          });
+
+          if (isValid) {
+            toast.success("Payment Verified and Successful!");
+          } else {
+            toast.error("Payment Verification Failed");
+          }
         },
         prefill: {
           name: `${user?.fullName}`,
@@ -36,15 +51,8 @@ const billing = () => {
         },
       };
 
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
-      script.async = true;
-      document.body.appendChild(script);
-
-      script.onload = () => {
-        const paymentObject = new (window as any).Razorpay(options);
-        paymentObject.open();
-      };
+      const paymentObject = new (window as any).Razorpay(options);
+      paymentObject.open();
     } catch (error) {
       console.error("Error in payment process", error);
       toast.error("Payment failed. Please try again.");

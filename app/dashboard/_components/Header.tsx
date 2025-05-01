@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -23,9 +24,17 @@ const Header = () => {
       </div>
       <div className="flex items-center gap-5">
         <h2 className="text-white bg-primary rounded-full text-sm p-3">
-          Join Membership just for $5/Month
+          <Link href={"/dashboard/billing"}>
+            Join Membership just for $5/Month
+          </Link>
         </h2>
-        <UserButton />
+        <Link href={"/dashboard/profile"}>
+          <UserButton
+            userProfileMode="navigation"
+            userProfileUrl="/dashboard/setting"
+            afterSignOutUrl="/"
+          />
+        </Link>
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 "use client";
-import { useUser } from "@clerk/nextjs";
+import { useUser, signOut } from "@clerk/nextjs";
 import React, { useState } from "react";
 import Image from "next/image";
-
+import { Button } from "@/components/ui/button";
 const SettingsPage = () => {
   const { user } = useUser();
   const [name, setName] = useState(user?.fullName || "");
@@ -17,7 +17,7 @@ const SettingsPage = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-5">
       <div className="max-w-4xl mx-auto flex flex-col gap-5">
-        {/* Each card */}
+        {/* Profile Card */}
         <div className="bg-white p-6 rounded-2xl shadow-md">
           <div className="flex items-center gap-4">
             <Image
@@ -36,6 +36,7 @@ const SettingsPage = () => {
           </div>
         </div>
 
+        {/* Info Edit Card */}
         <div className="bg-white p-6 rounded-2xl shadow-md space-y-6">
           <h2 className="text-xl font-semibold text-gray-800">
             Edit Personal Information
@@ -62,16 +63,14 @@ const SettingsPage = () => {
               className="mt-1 w-full bg-gray-100 border border-gray-300 rounded-md px-4 py-2 text-gray-500 cursor-not-allowed"
             />
           </div>
-          <div className="flex justify-end">
-            <button
-              onClick={handleUpdate}
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition"
-            >
+          <div className="flex justify-end mt-3">
+            <Button onClick={handleUpdate} variant="default" size="sm">
               Save Changes
-            </button>
+            </Button>
           </div>
         </div>
 
+        {/* Password Card */}
         <div className="bg-white p-6 rounded-2xl shadow-md">
           <h2 className="text-xl font-semibold text-gray-800 mb-2">
             Password Settings
@@ -79,11 +78,16 @@ const SettingsPage = () => {
           <p className="text-sm text-gray-600">
             Change your current password securely.
           </p>
-          <button className="mt-3 text-blue-600 hover:underline text-sm font-medium">
+          <Button
+            variant="secondary"
+            size="sm"
+            className="mt-3 text-blue-600 hover:underline text-sm font-medium"
+          >
             Update Password
-          </button>
+          </Button>
         </div>
 
+        {/* Notification Card */}
         <div className="bg-white p-6 rounded-2xl shadow-md">
           <h2 className="text-xl font-semibold text-gray-800 mb-2">
             Notification Preferences
@@ -91,11 +95,16 @@ const SettingsPage = () => {
           <p className="text-sm text-gray-600">
             Choose how you want to receive notifications.
           </p>
-          <button className="mt-3 text-blue-600 hover:underline text-sm font-medium">
+          <Button
+            variant="secondary"
+            size="sm"
+            className="mt-3 text-blue-600 hover:underline text-sm font-medium"
+          >
             Edit Preferences
-          </button>
+          </Button>
         </div>
 
+        {/* Delete Account Card */}
         <div className="bg-red-50 p-6 rounded-2xl border border-red-200 shadow-md">
           <h2 className="text-xl font-semibold text-red-600 mb-2">
             Delete Account
@@ -103,18 +112,25 @@ const SettingsPage = () => {
           <p className="text-sm text-red-500">
             Permanently delete your account. This action cannot be undone.
           </p>
-          <button className="mt-3 text-red-600 hover:underline text-sm font-medium">
+          <Button
+            variant="destructive"
+            size="sm"
+            className="mt-3 text-red-600 hover:underline text-sm font-medium"
+          >
             Delete Account
-          </button>
+          </Button>
         </div>
 
+        {/* Logout Button */}
         <div className="flex justify-center">
-          <button
-            onClick={() => signOut({ redirectUrl: "/" })}
-            className="bg-gray-800 text-white px-6 py-2 rounded-lg font-medium hover:bg-gray-900 transition"
+          <Button
+            variant="destructive"
+            // onClick={() => signOut({ redirectUrl: "/" })}
+            size="default"
+            className="w-full sm:w-auto"
           >
             Logout
-          </button>
+          </Button>
         </div>
       </div>
     </div>

@@ -3,11 +3,25 @@ import React from "react";
 
 const SearchSection = ({ onSearchInput }: any) => {
   return (
-    <div className="p-10 bg-gradient-to-br from-purple-600 via-purple-900 to-blue-800 flex flex-col items-center justify-center text-white">
-      <h2 className="text-3xl font-bold">Browse All Templates</h2>
-      <p>What woould you like to create today ?</p>
-      <div className="w-full flex items-center justify-center">
-        <div className="flex items-center gap-2 p-2 border rounded-md bg-white my-5 w-[50%]">
+    <div className="relative w-full h-[400px] flex items-center justify-center text-white overflow-hidden">
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute w-full h-full object-cover z-0"
+        poster="/fallback.png"
+      >
+        <source src="/animation.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Content Overlay */}
+      <div className="relative z-10 text-center p-10 bg-black/40 rounded-xl">
+        <h2 className="text-3xl font-bold mb-2">Browse All Templates</h2>
+        <p className="mb-4">What would you like to create today?</p>
+        <div className="flex items-center gap-2 p-2 border rounded-md bg-white w-[300px] mx-auto">
           <Search className="text-black" />
           <input
             type="text"

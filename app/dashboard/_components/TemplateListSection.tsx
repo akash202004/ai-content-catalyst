@@ -21,24 +21,36 @@ export interface FORM {
 
 interface TemplateListSectionProps {
   userSearchInput?: string;
+  selectedCategory?: string;
 }
 
-const TemplateListSection = ({ userSearchInput }: TemplateListSectionProps) => {
-  const [TemplateList, setTemplateList] = useState(Templates);
+const TemplateListSection = ({
+  userSearchInput,
+  selectedCategory = "All",
+}: TemplateListSectionProps) => {
+  const [TemplateList, setTemplateList] = useState<TEMPLATE[]>(Templates);
+
   useEffect(() => {
+    let filtered = Templates;
+
     if (userSearchInput) {
-      const filterData = Templates.filter((item) =>
+      filtered = filtered.filter((item) =>
         item.name.toLowerCase().includes(userSearchInput.toLowerCase())
       );
-      setTemplateList(filterData);
-    } else {
-      setTemplateList(Templates);
     }
-  }, [userSearchInput]);
+
+    if (selectedCategory !== "All") {
+      filtered = filtered.filter(
+        (item) => item.category.toLowerCase() === selectedCategory.toLowerCase()
+      );
+    }
+
+    setTemplateList(filtered);
+  }, [userSearchInput, selectedCategory]);
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-10 bg-slate-100">
-      {TemplateList.map((item: TEMPLATE) => (
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-10 pt-5 bg-slate-100">
+      {TemplateList.map((item) => (
         <TemplateCard key={item.slug} {...item} />
       ))}
     </div>

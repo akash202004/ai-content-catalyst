@@ -1,11 +1,12 @@
 export default [
+  // Blog
   {
     name: "Blog Title",
     desc: "An AI tool that generates blog titles based on your blog information.",
     category: "Blog",
     icon: "https://cdn-icons-png.flaticon.com/128/4186/4186534.png",
     aiPrompt:
-      "Give me 5 blog topic ideas in bullet points only based on the given niche & outline and provide results in Rich Text Editor format.",
+      "You are an expert content strategist with over 15 years of experience in SEO-optimized writing. Generate 5 compelling and attention-grabbing blog title ideas in bullet points. Base the ideas strictly on the provided blog niche and outline. Ensure the tone is engaging and click-worthy. Format the results as rich text suitable for a modern blog platform.",
     slug: "generate-blog-title",
     form: [
       {
@@ -22,44 +23,182 @@ export default [
     ],
   },
   {
-    name: "Blog Content",
-    desc: "An AI tool that generates blog content based on your topic and outline.",
+    name: "Blog Intro",
+    desc: "An AI tool that crafts engaging introductions for your blog posts.",
     category: "Blog",
-    icon: "https://cdn-icons-png.flaticon.com/128/4905/4905454.png",
-    slug: "blog-content-generation",
+    icon: "https://cdn-icons-png.flaticon.com/128/1008/1008032.png",
     aiPrompt:
-      "Generate Blog Content based on topic and outline in Rich Text Editor format.",
+      "You are a senior blog copywriter with 15+ years of experience in crafting hook-driven intros. Based on the given niche and outline, write a captivating blog introduction that clearly presents the topic, engages readers from the first line, and hints at the value of the content. Keep the tone professional and curious. Output should be formatted for a rich text editor.",
+    slug: "generate-blog-intro",
     form: [
       {
-        label: "Enter your blog topic",
+        label: "Enter your blog niche",
         field: "input",
-        name: "topic",
+        name: "niche",
         required: true,
       },
       {
-        label: "Enter blog outline here",
+        label: "Enter blog outline",
         field: "textarea",
         name: "outline",
       },
     ],
   },
   {
-    name: "Blog Topic Ideas",
-    desc: "An AI tool that generates catchy blog post titles and topic ideas based on your niche.",
+    name: "Blog Conclusion",
+    desc: "An AI tool that creates impactful conclusions to wrap up blog posts effectively.",
     category: "Blog",
-    icon: "https://cdn-icons-png.flaticon.com/128/11497/11497847.png",
-    slug: "blog-topic-idea",
+    icon: "https://cdn-icons-png.flaticon.com/128/219/219983.png",
     aiPrompt:
-      "Generate top 5 Blog Topic Ideas in bullet points only, based on niche in Rich Text Editor format.",
+      "As a professional content writer with 15 years of experience, generate a strong and thoughtful conclusion for a blog based on the provided niche and outline. Ensure the ending includes a summary of key takeaways, encourages further thought or action, and leaves a lasting impression. Write in a concise, motivational tone. Format the result in rich text.",
+    slug: "generate-blog-conclusion",
     form: [
       {
-        label: "Enter your niche",
+        label: "Enter your blog niche",
         field: "input",
         name: "niche",
         required: true,
       },
+      {
+        label: "Enter blog outline",
+        field: "textarea",
+        name: "outline",
+      },
     ],
   },
+  {
+    name: "Blog Paragraph",
+    desc: "An AI tool that writes detailed and informative blog paragraphs based on a sub-topic.",
+    category: "Blog",
+    icon: "https://cdn-icons-png.flaticon.com/128/84/84380.png",
+    aiPrompt:
+      "You are a professional blog content creator with 15+ years of writing experience. Based on the provided niche and sub-topic, write a detailed and well-structured blog paragraph. Ensure the writing is informative, SEO-friendly, and maintains clarity and engagement throughout. The paragraph should feel natural and human-written. Return the content in rich text format.",
+    slug: "generate-blog-paragraph",
+    form: [
+      {
+        label: "Enter your blog niche",
+        field: "input",
+        name: "niche",
+        required: true,
+      },
+      {
+        label: "Enter blog sub-topic",
+        field: "input",
+        name: "subtopic",
+        required: true,
+      },
+    ],
+  },
+  // Instagram
+  {
+    name: "Instagram Post Generator",
+    desc: "Generate 3 Instagram post ideas based on the given keywords, with the result in Rich Text Editor format.",
+    category: "Blog",
+    icon: "https://cdn-icons-png.flaticon.com/128/15713/15713420.png",
+    slug: "instagram-post-generator",
+    aiPrompt:
+      "Generate 3 Instagram post ideas based on the given keywords and provide the result in Rich Text Editor format.",
+    form: [
+      {
+        label: "Enter keywords for your post",
+        field: "input",
+        name: "keywords",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Instagram Caption",
+    desc: "An AI tool that generates captivating Instagram captions based on your content.",
+    category: "Instagram",
+    icon: "https://cdn-icons-png.flaticon.com/128/2329/2329065.png",
+    aiPrompt:
+      "You are a seasoned social media strategist with over 15 years of experience creating engaging Instagram captions. Based on the provided image, niche, and theme, generate 5 unique and creative Instagram captions that resonate with the target audience. Ensure the captions are catchy, engaging, and relevant to the brand's voice. Provide results in Rich Text format for easy copy-paste.",
+    slug: "generate-instagram-caption",
+    form: [
+      {
+        label: "Enter your Instagram niche",
+        field: "input",
+        name: "niche",
+        required: true,
+      },
+      {
+        label: "Enter your post theme or content description",
+        field: "textarea",
+        name: "theme",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Instagram Hashtags",
+    desc: "An AI tool that suggests relevant hashtags for your Instagram posts.",
+    category: "Instagram",
+    icon: "https://cdn-icons-png.flaticon.com/128/870/870667.png",
+    aiPrompt:
+      "As a seasoned social media expert with over 15 years of experience, generate 10 relevant and trending Instagram hashtags based on the provided niche and content. Ensure the hashtags are a mix of popular and niche-specific tags to maximize engagement and reach. Format the result as a list of hashtags in rich text for easy copy-pasting.",
+    slug: "generate-instagram-hashtags",
+    form: [
+      {
+        label: "Enter your Instagram niche",
+        field: "input",
+        name: "niche",
+        required: true,
+      },
+      {
+        label: "Enter your content description or theme",
+        field: "textarea",
+        name: "theme",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Instagram Bio Ideas",
+    desc: "An AI tool that generates unique and creative Instagram bio ideas.",
+    category: "Instagram",
+    icon: "https://cdn-icons-png.flaticon.com/128/3062/3062613.png",
+    aiPrompt:
+      "You are an expert Instagram profile designer with 15+ years of experience. Generate 5 creative and attention-grabbing Instagram bio ideas based on the given niche and personality type. Ensure the bios reflect the brand's voice and create a strong first impression. Keep them concise, witty, and appealing. Format the result in rich text for easy use.",
+    slug: "generate-instagram-bio",
+    form: [
+      {
+        label: "Enter your Instagram niche",
+        field: "input",
+        name: "niche",
+        required: true,
+      },
+      {
+        label: "Enter your brand's tone or personality (optional)",
+        field: "input",
+        name: "tone",
+      },
+    ],
+  },
+  {
+    name: "Instagram Post Ideas",
+    desc: "An AI tool that generates Instagram post ideas based on your niche and content theme.",
+    category: "Instagram",
+    icon: "https://cdn-icons-png.flaticon.com/128/1057/1057042.png",
+    aiPrompt:
+      "You are a social media expert with 15 years of experience creating engaging Instagram post ideas. Based on the given niche and content theme, generate 5 unique Instagram post ideas that are creative, relevant to the audience, and designed to boost engagement. Include post types (e.g., carousel, story, reel) and potential calls-to-action. Provide the results in rich text format.",
+    slug: "generate-instagram-post-ideas",
+    form: [
+      {
+        label: "Enter your Instagram niche",
+        field: "input",
+        name: "niche",
+        required: true,
+      },
+      {
+        label: "Enter your content theme or goal",
+        field: "textarea",
+        name: "theme",
+        required: true,
+      },
+    ],
+  },
+  // Youtube
   {
     name: "Youtube SEO Title",
     desc: "An AI tool for generating SEO optimized, high-ranked YouTube titles based on keywords and description.",
@@ -173,23 +312,6 @@ export default [
         label: "Enter your text to add emojis",
         field: "textarea",
         name: "outline",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Instagram Post Generator",
-    desc: "Generate 3 Instagram post ideas based on the given keywords, with the result in Rich Text Editor format.",
-    category: "Blog",
-    icon: "https://cdn-icons-png.flaticon.com/128/15713/15713420.png",
-    slug: "instagram-post-generator",
-    aiPrompt:
-      "Generate 3 Instagram post ideas based on the given keywords and provide the result in Rich Text Editor format.",
-    form: [
-      {
-        label: "Enter keywords for your post",
-        field: "input",
-        name: "keywords",
         required: true,
       },
     ],

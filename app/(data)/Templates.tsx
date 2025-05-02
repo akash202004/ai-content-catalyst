@@ -265,564 +265,479 @@ export default [
       },
     ],
   },
+  // LinkedIn
   {
-    name: "Rewrite Article (Plagiarism Free)",
-    desc: "Use this tool to rewrite existing articles or blog posts to bypass AI detectors and make them plagiarism-free.",
-    category: "Rewriting Tool",
-    icon: "https://cdn-icons-png.flaticon.com/128/3131/3131607.png",
-    slug: "rewrite-article",
+    name: "LinkedIn Post Ideas",
+    desc: "Generate engaging LinkedIn post ideas tailored for personal branding, hiring, or thought leadership.",
+    category: "LinkedIn",
+    icon: "https://cdn-icons-png.flaticon.com/128/3536/3536505.png",
     aiPrompt:
-      "Rewrite the given article without any plagiarism in Rich Text Editor format.",
+      "You are a LinkedIn content strategist with over 15 years of experience. Based on the provided niche and objective (e.g., personal branding, hiring, thought leadership), generate 5 compelling LinkedIn post ideas. Each idea should include a brief description and suggested format (e.g., text, image, video). Present the results in rich text format.",
+    slug: "generate-linkedin-post-ideas",
     form: [
       {
-        label:
-          "🤖 Provide your article/blog post or any other content to rewrite.",
+        label: "Enter your niche or industry",
+        field: "input",
+        name: "niche",
+        required: true,
+      },
+      {
+        label: "Select your objective",
+        field: "select",
+        name: "objective",
+        options: ["Personal Branding", "Hiring", "Thought Leadership"],
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "LinkedIn Bio Generator",
+    desc: "Craft a professional LinkedIn headline and 'About' section to enhance your profile.",
+    category: "LinkedIn",
+    icon: "https://cdn-icons-png.flaticon.com/128/847/847969.png",
+    aiPrompt:
+      "As a seasoned LinkedIn profile expert with 15 years of experience, generate a compelling headline and 'About' section based on the provided career details and goals. Ensure the tone is professional and aligns with the user's industry. Format the output in rich text.",
+    slug: "generate-linkedin-bio",
+    form: [
+      {
+        label: "Enter your current role and industry",
+        field: "input",
+        name: "role_industry",
+        required: true,
+      },
+      {
+        label: "Describe your career goals and achievements",
         field: "textarea",
-        name: "article",
-        required: true,
+        name: "goals_achievements",
       },
     ],
   },
   {
-    name: "Text Improver",
-    desc: "This tool refines your writing, eliminating errors and redundancies, with tone analysis and better word suggestions.",
-    category: "Writing Assistant",
-    icon: "https://cdn-icons-png.flaticon.com/128/1686/1686815.png",
-    slug: "text-improver",
+    name: "LinkedIn Article Intro/Outro",
+    desc: "Generate engaging introductions and conclusions for your LinkedIn articles.",
+    category: "LinkedIn",
+    icon: "https://cdn-icons-png.flaticon.com/128/1250/1250615.png",
     aiPrompt:
-      "Given the input text, rewrite it without any grammar mistakes and professionally in Rich Text Editor format.",
+      "You are an experienced LinkedIn article writer with over 15 years in the field. Based on the provided article topic and key points, craft an engaging introduction and a compelling conclusion. The introduction should hook the reader, and the conclusion should summarize key insights and include a call-to-action. Present the results in rich text format.",
+    slug: "generate-linkedin-article-intro-outro",
     form: [
       {
-        label: "Enter text that you want to re-write or improve",
-        field: "textarea",
-        name: "textToImprove",
-      },
-    ],
-  },
-  {
-    name: "Add Emojis to Text",
-    desc: "This tool adds emojis to your text based on the given outline and rewrites it in Rich Text Editor format.",
-    category: "Blog",
-    icon: "https://cdn-icons-png.flaticon.com/128/2584/2584606.png",
-    slug: "add-emoji-to-text",
-    aiPrompt:
-      "Add emojis to the outline text and rewrite it in Rich Text Editor format.",
-    form: [
-      {
-        label: "Enter your text to add emojis",
-        field: "textarea",
-        name: "outline",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Instagram Hash Tag Generator",
-    desc: "Generate 15 Instagram hashtags based on the given keywords and provide the result in Rich Text Editor format.",
-    category: "Blog",
-    icon: "https://cdn-icons-png.flaticon.com/128/7045/7045432.png",
-    slug: "instagram-hash-tag-generator",
-    aiPrompt:
-      "Generate 15 Instagram hashtags based on the given keywords and provide the result in Rich Text Editor format.",
-    form: [
-      {
-        label: "Enter keywords for your Instagram hashtags",
-        field: "input",
-        name: "keywords",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Instagram Post/Reel Idea",
-    desc: "Generate new and trending Instagram post/reel ideas based on your niche.",
-    category: "Instagram",
-    icon: "https://cdn-icons-png.flaticon.com/128/1029/1029183.png",
-    slug: "instagram-post-idea-generator",
-    aiPrompt:
-      "Generate 5-10 Instagram ideas based on your niche and latest trends. Provide the result in Rich Text Editor format.",
-    form: [
-      {
-        label: "Enter keywords/niche for your Instagram idea",
-        field: "input",
-        name: "keywords",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "English Grammar Check",
-    desc: "AI model to correct your English grammar by providing the text.",
-    category: "English",
-    icon: "https://cdn-icons-png.flaticon.com/128/12596/12596700.png",
-    slug: "english-grammer-checker",
-    aiPrompt:
-      "Rewrite the input text by correcting the grammar and provide the output in Rich Text Editor format.",
-    form: [
-      {
-        label: "Enter text to correct the grammar",
-        field: "input",
-        name: "inputText",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Write Code",
-    desc: "AI model to generate programming code in any language based on the description provided.",
-    category: "Coding",
-    icon: "https://cdn-icons-png.flaticon.com/128/6062/6062646.png",
-    slug: "write-code",
-    aiPrompt:
-      "Based on the user code description, write the code and provide the output in a code block in Rich Text Editor format.",
-    form: [
-      {
-        label:
-          "Enter description of code you want along with programming language",
-        field: "textarea",
-        name: "codeDescription",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Explain Code",
-    desc: "AI model to explain programming code in any language line by line.",
-    category: "Coding",
-    icon: "https://cdn-icons-png.flaticon.com/128/8488/8488751.png",
-    slug: "explain-code",
-    aiPrompt:
-      "Based on the user code description, explain the code line by line and provide the output in a code block in Rich Text Editor format.",
-    form: [
-      {
-        label: "Enter code which you want to understand",
-        field: "textarea",
-        name: "codeToExplain",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Product Description",
-    desc: "This is your AI-powered SEO expert, creating captivating and keyword-rich e-commerce product descriptions to boost your online sales.",
-    icon: "https://cdn-icons-png.flaticon.com/128/679/679922.png",
-    category: "Marketing",
-    slug: "product-description",
-    aiPrompt:
-      "Depends on user productName and description generate small description for product for e-commerce business give output in rich text editor format",
-    form: [
-      {
-        label: "Product Name",
-        field: "input",
-        name: "productName",
-        required: true,
-      },
-      {
-        label: "Product Details",
-        field: "textarea",
-        name: "outline",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "LinkedIn Headline Generator",
-    desc: "Generate professional and impactful LinkedIn headlines that boost your profile visibility and network connections.",
-    icon: "https://cdn-icons-png.flaticon.com/128/1384/1384046.png",
-    category: "Professional Networking",
-    slug: "linkedin-headline-generator",
-    aiPrompt:
-      "Based on the provided professional background and career goals, generate a LinkedIn headline. Output in plain text.",
-    form: [
-      {
-        label: "Professional Background",
-        field: "input",
-        name: "background",
-        required: true,
-      },
-      {
-        label: "Career Goals",
-        field: "input",
-        name: "careerGoals",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "User Testimonial Generator",
-    desc: "Create authentic and impactful user testimonials that build trust and credibility for your brand.",
-    icon: "https://cdn-icons-png.flaticon.com/128/149/149070.png",
-    category: "Branding",
-    slug: "user-testimonial-generator",
-    aiPrompt:
-      "Based on the user experience and feedback provided, generate a user testimonial. Output in plain text.",
-    form: [
-      {
-        label: "User Experience",
-        field: "textarea",
-        name: "userExperience",
-        required: true,
-      },
-      {
-        label: "Key Feedback Points",
-        field: "textarea",
-        name: "keyFeedback",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Event Invitation Generator",
-    desc: "Design compelling event invitations that encourage high attendance and engagement.",
-    icon: "https://cdn-icons-png.flaticon.com/128/189/189101.png",
-    category: "Event Planning",
-    slug: "event-invitation-generator",
-    aiPrompt:
-      "Based on the event type and details, generate an event invitation. Output in rich text editor format.",
-    form: [
-      {
-        label: "Event Type",
-        field: "input",
-        name: "eventType",
-        required: true,
-      },
-      {
-        label: "Event Details",
-        field: "textarea",
-        name: "eventDetails",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Sales Pitch Generator",
-    desc: "Create persuasive sales pitches tailored to your product or service that resonate with your target audience.",
-    icon: "https://cdn-icons-png.flaticon.com/128/2079/2079540.png",
-    category: "Sales",
-    slug: "sales-pitch-generator",
-    aiPrompt:
-      "Based on the provided product/service and target audience, generate a sales pitch. Output in plain text.",
-    form: [
-      {
-        label: "Product/Service",
-        field: "input",
-        name: "productService",
-        required: true,
-      },
-      {
-        label: "Target Audience",
-        field: "input",
-        name: "targetAudience",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Newsletter Content Generator",
-    desc: "Generate engaging content for your newsletters, including articles, announcements, and special offers.",
-    icon: "https://cdn-icons-png.flaticon.com/128/1534/1534961.png",
-    category: "Email Marketing",
-    slug: "newsletter-content-generator",
-    aiPrompt:
-      "Based on the provided theme and key points, generate newsletter content. Output in rich text editor format.",
-    form: [
-      {
-        label: "Newsletter Theme",
-        field: "input",
-        name: "theme",
-        required: true,
-      },
-      {
-        label: "Key Points",
-        field: "textarea",
-        name: "keyPoints",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Ad Copy Generator",
-    desc: "Create compelling and high-converting ad copy for various platforms like Google Ads, Facebook Ads, and more.",
-    icon: "https://cdn-icons-png.flaticon.com/128/1055/1055674.png",
-    category: "Advertising",
-    slug: "ad-copy-generator",
-    aiPrompt:
-      "Based on the provided product or service and target audience, generate ad copy optimized for the selected platform. Output in rich text editor format.",
-    form: [
-      {
-        label: "Platform",
-        field: "input",
-        name: "platform",
-        required: true,
-      },
-      {
-        label: "Product/Service",
-        field: "input",
-        name: "productService",
-        required: true,
-      },
-      {
-        label: "Target Audience",
-        field: "input",
-        name: "targetAudience",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Customer Review Response Generator",
-    desc: "Generate polite and professional responses to customer reviews to maintain a positive brand image.",
-    icon: "https://cdn-icons-png.flaticon.com/128/2920/2920075.png",
-    category: "Customer Service",
-    slug: "customer-review-response-generator",
-    aiPrompt:
-      "Based on the customer review and the sentiment (positive, neutral, negative), generate a response. Output in plain text.",
-    form: [
-      {
-        label: "Customer Review",
-        field: "textarea",
-        name: "customerReview",
-        required: true,
-      },
-      {
-        label: "Sentiment",
-        field: "input",
-        name: "sentiment",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Email Subject Line Generator",
-    desc: "Create attention-grabbing email subject lines that increase your open rates and improve email marketing success.",
-    icon: "https://cdn-icons-png.flaticon.com/128/126/126510.png",
-    category: "Email Marketing",
-    slug: "email-subject-line-generator",
-    aiPrompt:
-      "Based on the provided email content, generate an optimized subject line that is likely to boost open rates. Output in plain text.",
-    form: [
-      {
-        label: "Email Content",
-        field: "textarea",
-        name: "emailContent",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Social Media Post Generator",
-    desc: "Craft engaging and platform-specific social media posts that captivate your audience and increase engagement.",
-    icon: "https://cdn-icons-png.flaticon.com/128/102/102016.png",
-    category: "Social Media",
-    slug: "social-media-post-generator",
-    aiPrompt:
-      "Based on the platform (e.g., Facebook, Twitter, LinkedIn), generate a social media post using the provided topic and tone. Output in rich text editor format.",
-    form: [
-      {
-        label: "Platform",
-        field: "input",
-        name: "platform",
-        required: true,
-      },
-      {
-        label: "Post Topic",
-        field: "input",
-        name: "postTopic",
-        required: true,
-      },
-      {
-        label: "Tone (Ex: Casual, Professional, Humorous, Inspirational)",
-        field: "input",
-        name: "tone",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Press Release Generator",
-    desc: "Craft compelling press releases that attract media attention and effectively communicate your message.",
-    icon: "https://cdn-icons-png.flaticon.com/128/1000/1000918.png",
-    category: "Public Relations",
-    slug: "press-release-generator",
-    aiPrompt:
-      "Based on the provided event or announcement, generate a press release. Output in rich text editor format.",
-    form: [
-      {
-        label: "Event/Announcement",
-        field: "textarea",
-        name: "eventAnnouncement",
-        required: true,
-      },
-      {
-        label: "Key Details",
-        field: "textarea",
-        name: "keyDetails",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Survey Question Generator",
-    desc: "Create effective and targeted survey questions to gather valuable insights from your audience.",
-    icon: "https://cdn-icons-png.flaticon.com/128/2144/2144213.png",
-    category: "Market Research",
-    slug: "survey-question-generator",
-    aiPrompt:
-      "Based on the provided survey topic, generate relevant and insightful survey questions. Output in plain text.",
-    form: [
-      {
-        label: "Survey Topic",
-        field: "input",
-        name: "surveyTopic",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Customer Feedback Generator",
-    desc: "Generate structured and constructive feedback forms to help improve products and services.",
-    icon: "https://cdn-icons-png.flaticon.com/128/4294/4294076.png",
-    category: "Customer Service",
-    slug: "customer-feedback-generator",
-    aiPrompt:
-      "Based on the provided product or service, generate a feedback form with relevant questions. Output in plain text.",
-    form: [
-      {
-        label: "Product/Service",
-        field: "input",
-        name: "productService",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Product Naming Generator",
-    desc: "Create unique and memorable names for your products that resonate with your target audience.",
-    icon: "https://cdn-icons-png.flaticon.com/128/1256/1256165.png",
-    category: "Branding",
-    slug: "product-naming-generator",
-    aiPrompt:
-      "Based on the product description and target market, generate a list of potential product names. Output in plain text.",
-    form: [
-      {
-        label: "Product Description",
-        field: "textarea",
-        name: "productDescription",
-        required: true,
-      },
-      {
-        label: "Target Market",
-        field: "input",
-        name: "targetMarket",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Slogan Generator",
-    desc: "Generate catchy and memorable slogans that effectively convey your brand’s message.",
-    icon: "https://cdn-icons-png.flaticon.com/128/1055/1055697.png",
-    category: "Branding",
-    slug: "slogan-generator",
-    aiPrompt:
-      "Based on the brand’s mission and core values, generate a catchy slogan. Output in plain text.",
-    form: [
-      {
-        label: "Brand Mission",
-        field: "textarea",
-        name: "brandMission",
-        required: true,
-      },
-      {
-        label: "Core Values",
-        field: "textarea",
-        name: "coreValues",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Content Outline Generator",
-    desc: "Create detailed and structured content outlines for blogs, articles, or reports.",
-    icon: "https://cdn-icons-png.flaticon.com/128/1097/1097073.png",
-    category: "Content Creation",
-    slug: "content-outline-generator",
-    aiPrompt:
-      "Based on the provided topic and key points, generate a content outline. Output in plain text.",
-    form: [
-      {
-        label: "Topic",
+        label: "Enter your article topic",
         field: "input",
         name: "topic",
         required: true,
       },
       {
-        label: "Key Points",
+        label: "List the key points or outline",
         field: "textarea",
-        name: "keyPoints",
+        name: "key_points",
+      },
+    ],
+  },
+  {
+    name: "LinkedIn Cold Message Generator",
+    desc: "Create personalized cold outreach messages for LinkedIn connections.",
+    category: "LinkedIn",
+    icon: "https://cdn-icons-png.flaticon.com/128/725/725643.png",
+    aiPrompt:
+      "As a LinkedIn outreach specialist with 15 years of experience, generate a personalized cold message based on the provided recipient details and purpose. Ensure the message is professional, concise, and encourages engagement. Format the output in rich text.",
+    slug: "generate-linkedin-cold-message",
+    form: [
+      {
+        label: "Enter recipient's name and role",
+        field: "input",
+        name: "recipient_details",
         required: true,
+      },
+      {
+        label: "Describe the purpose of the message",
+        field: "textarea",
+        name: "message_purpose",
+      },
+    ],
+  },
+  {
+    name: "LinkedIn Hashtag Generator",
+    desc: "Suggest relevant hashtags to increase the visibility of your LinkedIn posts.",
+    category: "LinkedIn",
+    icon: "https://cdn-icons-png.flaticon.com/128/1384/1384017.png",
+    aiPrompt:
+      "You are a LinkedIn content optimization expert with 15 years of experience. Based on the provided post content or topic, generate a list of 10 relevant and trending hashtags to enhance post visibility. Present the hashtags in rich text format.",
+    slug: "generate-linkedin-hashtags",
+    form: [
+      {
+        label: "Enter your post content or topic",
+        field: "textarea",
+        name: "post_content",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "LinkedIn Engagement Hooks",
+    desc: "Generate compelling opening lines to boost engagement on your LinkedIn posts.",
+    category: "LinkedIn",
+    icon: "https://cdn-icons-png.flaticon.com/128/1250/1250615.png",
+    aiPrompt:
+      "As a LinkedIn engagement specialist with over 15 years of experience, generate 5 attention-grabbing opening lines (hooks) based on the provided post topic. Each hook should be designed to captivate the audience and encourage them to read further. Present the hooks in rich text format.",
+    slug: "generate-linkedin-engagement-hooks",
+    form: [
+      {
+        label: "Enter your post topic or main idea",
+        field: "input",
+        name: "post_topic",
+        required: true,
+      },
+    ],
+  },
+  // X (Twitter)
+  {
+    name: "Twitter Thread Ideas",
+    desc: "Generate engaging Twitter thread ideas tailored to your niche and audience.",
+    category: "Twitter",
+    icon: "https://cdn-icons-png.flaticon.com/128/733/733579.png",
+    aiPrompt:
+      "You are a seasoned Twitter strategist with over 15 years of experience. Based on the provided niche and target audience, generate 5 compelling Twitter thread ideas. Each idea should include a captivating hook and a brief outline of the thread's content. Present the results in rich text format.",
+    slug: "generate-twitter-thread-ideas",
+    form: [
+      {
+        label: "Enter your niche or industry",
+        field: "input",
+        name: "niche",
+        required: true,
+      },
+      {
+        label: "Describe your target audience",
+        field: "textarea",
+        name: "audience",
+      },
+    ],
+  },
+  {
+    name: "Viral Tweet Generator",
+    desc: "Craft tweets designed to go viral and maximize engagement.",
+    category: "Twitter",
+    icon: "https://cdn-icons-png.flaticon.com/128/733/733579.png",
+    aiPrompt:
+      "As a social media expert with 15 years of experience, generate 5 tweet ideas based on the provided topic that have the potential to go viral. Each tweet should be concise, engaging, and tailored to resonate with a broad audience. Present the tweets in rich text format.",
+    slug: "generate-viral-tweets",
+    form: [
+      {
+        label: "Enter your tweet topic or theme",
+        field: "input",
+        name: "topic",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Hashtag Suggestions",
+    desc: "Suggest relevant and trending hashtags to enhance your tweet's visibility.",
+    category: "Twitter",
+    icon: "https://cdn-icons-png.flaticon.com/128/733/733579.png",
+    aiPrompt:
+      "You are a Twitter marketing specialist with over 15 years of experience. Based on the provided tweet content or topic, suggest 10 relevant and trending hashtags to maximize reach and engagement. Present the hashtags in rich text format.",
+    slug: "generate-twitter-hashtags",
+    form: [
+      {
+        label: "Enter your tweet content or topic",
+        field: "textarea",
+        name: "content",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Hook Generator for Tweets",
+    desc: "Create compelling opening lines to capture your audience's attention.",
+    category: "Twitter",
+    icon: "https://cdn-icons-png.flaticon.com/128/733/733579.png",
+    aiPrompt:
+      "As a copywriting expert with 15 years of experience, generate 5 captivating hooks for tweets based on the provided topic. Each hook should be designed to grab attention and encourage users to read more. Present the hooks in rich text format.",
+    slug: "generate-twitter-hooks",
+    form: [
+      {
+        label: "Enter your tweet topic or main idea",
+        field: "input",
+        name: "topic",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Poll Ideas",
+    desc: "Generate engaging poll questions to boost audience interaction.",
+    category: "Twitter",
+    icon: "https://cdn-icons-png.flaticon.com/128/733/733579.png",
+    aiPrompt:
+      "You are a social media engagement expert with over 15 years of experience. Based on the provided topic, generate 3 engaging poll questions suitable for Twitter. Each question should include 2-4 answer options and be designed to encourage audience participation. Present the polls in rich text format.",
+    slug: "generate-twitter-poll-ideas",
+    form: [
+      {
+        label: "Enter your poll topic or theme",
+        field: "input",
+        name: "topic",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Call-To-Action Tweet Templates",
+    desc: "Craft effective call-to-action tweets to drive user engagement.",
+    category: "Twitter",
+    icon: "https://cdn-icons-png.flaticon.com/128/733/733579.png",
+    aiPrompt:
+      "As a seasoned social media strategist with 15 years of experience, generate 5 call-to-action tweet templates based on the provided objective (e.g., website visit, newsletter signup). Each template should be concise, persuasive, and tailored to drive the desired action. Present the templates in rich text format.",
+    slug: "generate-twitter-cta-templates",
+    form: [
+      {
+        label: "Enter your call-to-action objective",
+        field: "input",
+        name: "objective",
+        required: true,
+      },
+    ],
+  },
+  // Business/Marketing
+  {
+    name: "Startup Idea Validator",
+    desc: "Assess the viability of your startup idea with expert-level AI insights.",
+    category: "Business / Startup",
+    icon: "https://cdn-icons-png.flaticon.com/128/1041/1041916.png",
+    aiPrompt:
+      "You are a seasoned startup advisor with over 15 years of experience. Evaluate the provided startup idea by analyzing its market potential, target audience, unique value proposition, and potential challenges. Provide a comprehensive assessment highlighting strengths, weaknesses, opportunities, and threats. Present the evaluation in rich text format.",
+    slug: "startup-idea-validator",
+    form: [
+      {
+        label: "Describe your startup idea",
+        field: "textarea",
+        name: "idea_description",
+        required: true,
+      },
+      {
+        label: "Identify your target audience",
+        field: "input",
+        name: "target_audience",
+      },
+    ],
+  },
+  {
+    name: "Investor Pitch Summary",
+    desc: "Craft a compelling investor pitch summary to attract potential investors.",
+    category: "Business / Startup",
+    icon: "https://cdn-icons-png.flaticon.com/128/1041/1041916.png",
+    aiPrompt:
+      "As an experienced pitch deck consultant with 15 years in the industry, generate a concise and persuasive investor pitch summary based on the provided business details. Highlight the problem, solution, market opportunity, business model, and team strengths. Ensure the summary is tailored to appeal to potential investors. Present the summary in rich text format.",
+    slug: "investor-pitch-summary",
+    form: [
+      {
+        label: "Provide your business overview",
+        field: "textarea",
+        name: "business_overview",
+        required: true,
+      },
+      {
+        label: "Outline your key value proposition",
+        field: "input",
+        name: "value_proposition",
+      },
+    ],
+  },
+  {
+    name: "Mission & Vision Generator",
+    desc: "Develop clear and inspiring mission and vision statements for your business.",
+    category: "Business / Startup",
+    icon: "https://cdn-icons-png.flaticon.com/128/1041/1041916.png",
+    aiPrompt:
+      "You are a brand strategist with over 15 years of experience. Based on the provided company values, goals, and target audience, craft compelling mission and vision statements that reflect the organization's purpose and aspirations. Ensure the statements are clear, inspiring, and aligned with the company's strategic direction. Present the statements in rich text format.",
+    slug: "mission-vision-generator",
+    form: [
+      {
+        label: "Describe your company values and goals",
+        field: "textarea",
+        name: "company_values_goals",
+        required: true,
+      },
+      {
+        label: "Identify your target audience",
+        field: "input",
+        name: "target_audience",
+      },
+    ],
+  },
+  {
+    name: "USP (Unique Selling Proposition) Generator",
+    desc: "Define what sets your product or service apart from the competition.",
+    category: "Business / Startup",
+    icon: "https://cdn-icons-png.flaticon.com/128/1041/1041916.png",
+    aiPrompt:
+      "As a marketing expert with 15 years of experience, generate a unique selling proposition (USP) based on the provided product or service details. Highlight the key differentiators that make the offering stand out in the market. Ensure the USP is clear, concise, and compelling. Present the USP in rich text format.",
+    slug: "usp-generator",
+    form: [
+      {
+        label: "Describe your product or service",
+        field: "textarea",
+        name: "product_service_description",
+        required: true,
+      },
+      {
+        label: "List your key differentiators",
+        field: "input",
+        name: "key_differentiators",
       },
     ],
   },
   {
     name: "Product Feature List Generator",
-    desc: "Generate a detailed and compelling list of product features that highlight its value and benefits.",
-    icon: "https://cdn-icons-png.flaticon.com/128/1161/1161833.png",
-    category: "E-commerce",
+    desc: "Generate a comprehensive list of product features to showcase your offering.",
+    category: "Business / Startup",
+    icon: "https://cdn-icons-png.flaticon.com/128/1041/1041916.png",
+    aiPrompt:
+      "You are a product manager with over 15 years of experience. Based on the provided product details, generate a detailed list of features that highlight the product's capabilities and benefits. Ensure the features are clearly described and organized logically. Present the feature list in rich text format.",
     slug: "product-feature-list-generator",
-    aiPrompt:
-      "Based on the provided product description, generate a list of key features and benefits. Output in plain text.",
     form: [
       {
-        label: "Product Description",
+        label: "Provide your product details",
         field: "textarea",
-        name: "productDescription",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Quora Answer Generator",
-    desc: "Generate thoughtful and informative answers to Quora questions to build your online presence and authority.",
-    icon: "https://cdn-icons-png.flaticon.com/128/888/888879.png",
-    category: "Content Creation",
-    slug: "quora-answer-generator",
-    aiPrompt:
-      "Based on the provided question and context, generate a well-researched answer. Output in plain text.",
-    form: [
-      {
-        label: "Question",
-        field: "textarea",
-        name: "question",
+        name: "product_details",
         required: true,
       },
       {
-        label: "Context",
-        field: "textarea",
-        name: "context",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Podcast Episode Description Generator",
-    desc: "Generate engaging and informative descriptions for your podcast episodes to attract listeners.",
-    icon: "https://cdn-icons-png.flaticon.com/128/1642/1642588.png",
-    category: "Content Creation",
-    slug: "podcast-episode-description-generator",
-    aiPrompt:
-      "Based on the provided episode title and key points, generate a description for the podcast episode. Output in plain text.",
-    form: [
-      {
-        label: "Episode Title",
+        label: "Specify the target audience or user persona",
         field: "input",
-        name: "episodeTitle",
+        name: "target_audience",
+      },
+    ],
+  },
+  {
+    name: "Problem-Solution Statement",
+    desc: "Articulate the core problem your business addresses and your solution.",
+    category: "Business / Startup",
+    icon: "https://cdn-icons-png.flaticon.com/128/1041/1041916.png",
+    aiPrompt:
+      "As a business analyst with 15 years of experience, craft a clear and concise problem-solution statement based on the provided information. Define the specific problem faced by the target audience and detail how your product or service offers a solution. Ensure the statement is structured to highlight the value proposition effectively. Present the statement in rich text format.",
+    slug: "problem-solution-statement",
+    form: [
+      {
+        label: "Describe the problem your business addresses",
+        field: "textarea",
+        name: "problem_description",
         required: true,
       },
       {
-        label: "Key Points",
+        label: "Explain your solution",
         field: "textarea",
-        name: "keyPoints",
+        name: "solution_description",
+        required: true,
+      },
+    ],
+  },
+  // Ai utility
+  {
+    name: "Summarizer (PDF, Docs, Notes)",
+    desc: "Summarize lengthy documents, PDFs, and notes into concise summaries.",
+    category: "AI Utility / Productivity",
+    icon: "https://cdn-icons-png.flaticon.com/128/3135/3135715.png",
+    aiPrompt:
+      "You are an expert summarizer with over 15 years of experience. Based on the provided document content, generate a concise and coherent summary that captures the key points and main ideas. Ensure the summary is clear and easy to understand. Present the summary in rich text format.",
+    slug: "summarizer",
+    form: [
+      {
+        label: "Paste your document content",
+        field: "textarea",
+        name: "document_content",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Paraphraser / Rewriter",
+    desc: "Rephrase text to improve clarity and avoid plagiarism.",
+    category: "AI Utility / Productivity",
+    icon: "https://cdn-icons-png.flaticon.com/128/3135/3135715.png",
+    aiPrompt:
+      "As a professional writer with 15 years of experience, rephrase the provided text to enhance clarity and originality while preserving the original meaning. Ensure the rewritten text is fluent and free of plagiarism. Present the rewritten text in rich text format.",
+    slug: "paraphraser-rewriter",
+    form: [
+      {
+        label: "Enter text to paraphrase",
+        field: "textarea",
+        name: "text_to_paraphrase",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Tone Changer (Formal, Casual, Persuasive, etc.)",
+    desc: "Adjust the tone of your text to suit different contexts.",
+    category: "AI Utility / Productivity",
+    icon: "https://cdn-icons-png.flaticon.com/128/3135/3135715.png",
+    aiPrompt:
+      "You are a communication specialist with over 15 years of experience. Based on the provided text and selected tone, rewrite the text to match the desired tone (e.g., formal, casual, persuasive). Ensure the adjusted text maintains the original message while reflecting the specified tone. Present the adjusted text in rich text format.",
+    slug: "tone-changer",
+    form: [
+      {
+        label: "Enter text to adjust",
+        field: "textarea",
+        name: "text_to_adjust",
+        required: true,
+      },
+      {
+        label: "Select desired tone",
+        field: "select",
+        name: "desired_tone",
+        options: ["Formal", "Casual", "Persuasive", "Friendly", "Professional"],
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Bullet Point Expander",
+    desc: "Expand bullet points into detailed paragraphs.",
+    category: "AI Utility / Productivity",
+    icon: "https://cdn-icons-png.flaticon.com/128/3135/3135715.png",
+    aiPrompt:
+      "As an experienced content writer with 15 years of expertise, expand the provided bullet points into comprehensive paragraphs. Ensure each paragraph elaborates on the bullet point, providing clarity and additional information. Present the expanded content in rich text format.",
+    slug: "bullet-point-expander",
+    form: [
+      {
+        label: "Enter bullet points",
+        field: "textarea",
+        name: "bullet_points",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Grammar Fixer",
+    desc: "Correct grammatical errors and improve sentence structure.",
+    category: "AI Utility / Productivity",
+    icon: "https://cdn-icons-png.flaticon.com/128/3135/3135715.png",
+    aiPrompt:
+      "You are a seasoned editor with over 15 years of experience. Review the provided text and correct any grammatical errors, punctuation mistakes, and awkward phrasing. Ensure the revised text is grammatically correct and reads smoothly. Present the corrected text in rich text format.",
+    slug: "grammar-fixer",
+    form: [
+      {
+        label: "Enter text to correct",
+        field: "textarea",
+        name: "text_to_correct",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "Text to Hashtags / Emojis",
+    desc: "Convert text into relevant hashtags and emojis for social media.",
+    category: "AI Utility / Productivity",
+    icon: "https://cdn-icons-png.flaticon.com/128/3135/3135715.png",
+    aiPrompt:
+      "As a social media expert with 15 years of experience, analyze the provided text and generate a list of relevant hashtags and emojis to enhance engagement on social media platforms. Ensure the hashtags are trending and the emojis align with the content's tone. Present the hashtags and emojis in rich text format.",
+    slug: "text-to-hashtags-emojis",
+    form: [
+      {
+        label: "Enter text to convert",
+        field: "textarea",
+        name: "text_to_convert",
         required: true,
       },
     ],

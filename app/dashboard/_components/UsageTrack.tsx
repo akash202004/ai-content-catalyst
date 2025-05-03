@@ -7,6 +7,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
 import { UpdateCredit } from "@/app/(context)/UpdateCredit";
 import { getAiOutputById } from "@/controllers/aiOutputController";
+import { cleanHtmlText } from "@/utils/cleanHtmlText";
 
 const UsageTrack = () => {
   const { user } = useUser();
@@ -25,7 +26,7 @@ const UsageTrack = () => {
     lastClicked.current = now; 
     setLoading(true); 
 
-    await redirect.push("/dashboard/billing");
+    redirect.push("/dashboard/billing");
 
     setLoading(false); 
   };
@@ -50,13 +51,15 @@ const UsageTrack = () => {
   };
 
   const getTotalUsage = (result: any[]) => {
-    let total: number = 0;
+    let total: number = 0; 
+
     result.forEach((element: any) => {
-      total = total + Number(element.aiResponse?.length);
+      const cleanResponse = cleanHtmlText(element.aiResponse || "");
+      total += cleanResponse.length; 
     });
 
-    const cappedTotalUsage = Math.min(total, 10000);
-    setTotalUsage(cappedTotalUsage);
+    const cappedTotalUsage = Math.min(total, 10000); 
+    setTotalUsage(cappedTotalUsage); 
   };
 
   return (

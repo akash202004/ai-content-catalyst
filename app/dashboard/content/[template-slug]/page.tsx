@@ -8,7 +8,7 @@ import Templates from "@/app/(data)/Templates";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import { chatSession } from "@/utils/AiModel";
+import { chatSession } from "@/utils/aiModel";
 import { db } from "@/db/index";
 import { AIOutput } from "@/db/schema";
 import { useUser } from "@clerk/nextjs";

@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { db } from "@/utils/db";
-import { AIOutput } from "@/utils/schema";
+import { db } from "@/db/index";
+import { AIOutput } from "@/db/schema";
 import { useUser } from "@clerk/nextjs";
 import { eq } from "drizzle-orm";
 import { useRouter } from "next/navigation";
@@ -28,14 +28,14 @@ const UsageTrack = () => {
 
   const getData = async () => {
     try {
-      const result: HISTORY[] = await db
-        .select()
-        .from(AIOutput)
-        .where(
-          eq(AIOutput?.createdBy, user?.primaryEmailAddress?.emailAddress || "")
-        );
+      // const result: HISTORY[] = await db
+      //   .select()
+      //   .from(AIOutput)
+      //   .where(
+      //     eq(AIOutput?.createdBy, user?.primaryEmailAddress?.emailAddress || "")
+      //   );
 
-      getTotalUsage(result);
+      // getTotalUsage(result);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }

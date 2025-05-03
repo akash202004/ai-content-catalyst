@@ -51,7 +51,7 @@ const CreateNewContent = (props: PROPS) => {
       const finalAIPrompt = JSON.stringify(formData) + ", " + selectedPrompt;
       const result = await chatSession.sendMessage(finalAIPrompt);
       setAiOutput(result?.response.text());
-      await saveInDb(formData, selectedTemplate?.slug, result?.response.text());
+      // await saveInDb(formData, selectedTemplate?.slug, result?.response.text());
       setLoading(false);
       setUpdateCredit(Date.now());
     } catch (error) {

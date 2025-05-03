@@ -25,3 +25,15 @@ export async function createAiOutput(data: AiOutput) {
     throw new Error("Failed to create AI output");
   }
 }
+
+export async function getAiOutputById(id: string){
+  try {
+    const result = await db.query.AIOutput.findMany({
+      where: eq(AIOutput.id, id),
+    });
+    return result;
+  } catch (error) {
+    console.error("Error fetching AI output by ID:", error);
+    throw new Error("Failed to fetch AI output");
+  }
+}

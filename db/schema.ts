@@ -2,7 +2,7 @@ import { pgTable, varchar, text, uuid, timestamp } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 
 export const User = pgTable("user", {
-  id: uuid("id").primaryKey(),
+  id: text("id").primaryKey(),
   email: varchar("email", { length: 255 }).notNull(),
   name: varchar("name", { length: 255 }),
   createdAt: timestamp("created_at").defaultNow(),
@@ -13,7 +13,7 @@ export const AIOutput = pgTable("ai_output", {
   formData: varchar("formData", { length: 1000 }).notNull(),
   aiResponse: text("aiResponse"),
   templateSlug: varchar("templateSlug", { length: 255 }).notNull(),
-  createdBy: uuid("created_by")
+  createdBy: text("created_by")
     .references(() => User.id, { onDelete: "cascade" })
     .notNull(),
   createdAt: timestamp("created_at").defaultNow(),

@@ -1,6 +1,6 @@
 "use client";
-import { db } from "@/utils/db";
-import { AIOutput } from "@/utils/schema";
+import { db } from "@/db/index";
+import { AIOutput } from "@/db/schema";
 import { useUser } from "@clerk/nextjs";
 import { desc, eq } from "drizzle-orm";
 import { useSearchParams } from "next/navigation";
@@ -57,12 +57,12 @@ const History = () => {
 
     try {
       const email = user?.primaryEmailAddress?.emailAddress || "";
-      const data: HISTORY[] = await db
-        .select()
-        .from(AIOutput)
-        .where(eq(AIOutput.createdBy, email))
-        .orderBy(desc(AIOutput.createdAt));
-      setHistoryData(data);
+      // const data: HISTORY[] = await db
+      //   .select()
+      //   .from(AIOutput)
+      //   .where(eq(AIOutput.createdBy, email))
+      //   .orderBy(desc(AIOutput.createdAt));
+      // setHistoryData(data);
     } catch (error) {
       console.error("Error fetching data:", error);
       setError("Failed to load history.");

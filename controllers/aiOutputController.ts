@@ -29,7 +29,7 @@ export async function createAiOutput(data: AiOutput) {
 export async function getAiOutputById(id: string){
   try {
     const result = await db.query.AIOutput.findMany({
-      where: eq(AIOutput.id, id),
+      where: eq(AIOutput.createdBy, id),
     });
     return result;
   } catch (error) {

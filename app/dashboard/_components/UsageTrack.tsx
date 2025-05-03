@@ -1,23 +1,33 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
-import { db } from "@/db/index";
-import { AIOutput } from "@/db/schema";
 import { useUser } from "@clerk/nextjs";
-import { eq } from "drizzle-orm";
 import { useRouter } from "next/navigation";
-import React, { useContext, useEffect, useState } from "react";
-import { HISTORY } from "../history/page";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
 import { UpdateCredit } from "@/app/(context)/UpdateCredit";
+import { getAiOutputById } from "@/controllers/aiOutputController";
 
 const UsageTrack = () => {
   const { user } = useUser();
   const redirect = useRouter();
   const { totalUsage, setTotalUsage } = useContext(TotalUsageContext);
   const { updateCredit, setUpdateCredit } = useContext(UpdateCredit);
+  
+  const [loading, setLoading] = useState(false);
+  const lastClicked = useRef(0); 
 
-  const handleClick = () => {
-    redirect.push("/dashboard/billing");
+  const handleClick = async () => {
+    const now = Date.now();
+    if (now - lastClicked.current < 1000) {
+      return;
+    }
+    lastClicked.current = now; 
+    setLoading(true); 
+
+    await redirect.push("/dashboard/billing");
+
+    setLoading(false); 
   };
 
   useEffect(() => {
@@ -28,20 +38,18 @@ const UsageTrack = () => {
 
   const getData = async () => {
     try {
-      // const result: HISTORY[] = await db
-      //   .select()
-      //   .from(AIOutput)
-      //   .where(
-      //     eq(AIOutput?.createdBy, user?.primaryEmailAddress?.emailAddress || "")
-      //   );
-
-      // getTotalUsage(result);
+      if(!user) {
+        console.error("User not found");
+        return;
+      }
+      const result = await getAiOutputById(user?.id);
+      getTotalUsage(result);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
   };
 
-  const getTotalUsage = (result: HISTORY[]) => {
+  const getTotalUsage = (result: any[]) => {
     let total: number = 0;
     result.forEach((element: any) => {
       total = total + Number(element.aiResponse?.length);
@@ -67,8 +75,9 @@ const UsageTrack = () => {
         variant={"outline"}
         className="w-full my-3 text-primary font-bold border-black"
         onClick={handleClick}
+        disabled={loading} 
       >
-        Upgrade
+        {loading ? "Loading..." : "Upgrade"}
       </Button>
     </div>
   );

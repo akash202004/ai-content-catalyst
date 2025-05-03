@@ -9,18 +9,26 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { chatSession } from "@/utils/AiModel";
-import { db } from "@/utils/db";
-import { AIOutput } from "@/utils/schema";
+import { db } from "@/db/index";
+import { AIOutput } from "@/db/schema";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment";
 import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
 import { toast } from "react-toastify";
 import { UpdateCredit } from "@/app/(context)/UpdateCredit";
+import { createAiOutput } from "@/controllers/aiOutputController";
 
 interface PROPS {
   params: {
     "template-slug": string;
   };
+}
+
+interface AIOutputData {
+  formData: string;
+  aiResponse: string;
+  templateSlug: string;
+  createdBy: string;
 }
 
 const CreateNewContent = (props: PROPS) => {
@@ -35,6 +43,10 @@ const CreateNewContent = (props: PROPS) => {
   );
 
   const generateAiContent = async (formData: any) => {
+    if (!user) {
+      toast.error("Please login to continue...");
+      return;
+    }
     if (totalUsage >= 10000) {
       toast.error("Your Free Credit Used Up! Upgrade for more...");
       return;
@@ -50,30 +62,38 @@ const CreateNewContent = (props: PROPS) => {
       const selectedPrompt = selectedTemplate?.aiPrompt;
       const finalAIPrompt = JSON.stringify(formData) + ", " + selectedPrompt;
       const result = await chatSession.sendMessage(finalAIPrompt);
-      setAiOutput(result?.response.text());
-      // await saveInDb(formData, selectedTemplate?.slug, result?.response.text());
+      const aiResponseText = await result?.response.text();
+      setAiOutput(aiResponseText);
+
+      await saveInDb({
+        formData,
+        templateSlug: selectedTemplate?.slug,
+        aiResponse: aiResponseText,
+        createdBy: user?.id || "", 
+      });
+
       setLoading(false);
       setUpdateCredit(Date.now());
     } catch (error) {
       console.log("Error in generating AI content", error);
-      setLoading(true);
+      setLoading(false); 
     }
   };
 
-  const saveInDb = async (formData: string, slug: any, aiRes: string) => {
-    if (!user?.primaryEmailAddress?.emailAddress) {
-      throw new Error("User email is required!!");
-    }
-
+  const saveInDb = async ({
+    formData,
+    aiResponse,
+    templateSlug,
+    createdBy,
+  }: AIOutputData) => {
     try {
-      const result = await db.insert(AIOutput).values({
-        formData: formData,
-        templateSlug: slug,
-        aiResponse: aiRes,
-        createdBy: user.primaryEmailAddress.emailAddress,
-        createdAt: moment().format("DD-MM-YYYY"),
+      const result = await createAiOutput({
+        formData: JSON.stringify(formData),
+        aiResponse,
+        templateSlug,
+        createdBy: user?.id || "", 
       });
-      console.log(result);
+
     } catch (error) {
       console.error("Error saving to database:", error);
       throw error;

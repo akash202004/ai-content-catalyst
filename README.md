@@ -7,8 +7,8 @@ Generate blog titles, Instagram hashtags, YouTube descriptions, and much more wi
 
 - 🔥 AI-powered content generation (powered by Gemini API)
 - 🔒 Secure authentication (Clerk)
-- 💳 Stripe-powered subscription plans (Free, Premium, Ultimate)
-- 🧠 35+ pre-built content templates
+- 💳 Razorpay-powered subscription plans (Free, Premium, Ultimate)
+- 🧠 30+ pre-built content templates
 - 📜 History tracking system
 - 📈 Advanced analytics dashboard (coming soon)
 - ⚡ Blazing fast database access with Drizzle ORM and Neon Postgres
@@ -21,7 +21,7 @@ Generate blog titles, Instagram hashtags, YouTube descriptions, and much more wi
 - **Backend:** Next.js App Router, API routes
 - **Database:** Neon Postgres (via Drizzle ORM)
 - **Authentication:** Clerk
-- **Payments:** Stripe
+- **Payments:** Razorpay
 - **AI Model:** Gemini API
 
 ## 🧩 Folder Structure
@@ -84,6 +84,7 @@ npm run dev
 ## 📈 Future Enhancements
 
 - [ ] Full analytics dashboard (track usage, top templates, etc.)
+- [ ] Post Simualtion (Make a report of your post performance)
 - [ ] Content sharing & export options (PDF, DOCX)
 - [ ] More template categories
 - [ ] AI tone and style customization

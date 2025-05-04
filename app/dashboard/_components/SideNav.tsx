@@ -1,5 +1,5 @@
 "use client";
-import { FileClock, Home, Settings, WalletCards } from "lucide-react";
+import { FileClock, Home, Settings, WalletCards, TrendingUp } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -12,6 +12,11 @@ const SideNav = () => {
       name: "Home",
       icon: Home,
       path: "/dashboard",
+    },
+    {
+      name: "Post Simulation",
+      icon: TrendingUp,
+      path: "/dashboard/simulation",
     },
     {
       name: "History",

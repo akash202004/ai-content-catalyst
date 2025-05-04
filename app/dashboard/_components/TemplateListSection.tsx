@@ -40,8 +40,8 @@ const TemplateListSection = ({
     }
 
     if (selectedCategory !== "All") {
-      filtered = filtered.filter(
-        (item) => item.category.toLowerCase() === selectedCategory.toLowerCase()
+      filtered = filtered.filter((item) =>
+        item.category.toLowerCase().includes(selectedCategory.toLowerCase())
       );
     }
 

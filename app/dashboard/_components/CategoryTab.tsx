@@ -7,8 +7,7 @@ const categories = [
   "YouTube",
   "Linkedin",
   "Twitter",
-  "SEO",
-  "Other",
+  "Business",
 ];
 
 interface Props {

@@ -93,7 +93,7 @@ export default [
   {
     name: "Instagram Post Generator",
     desc: "Generate 3 Instagram post ideas based on the given keywords, with the result in Rich Text Editor format.",
-    category: "Blog",
+    category: "Instagram",
     icon: "https://cdn-icons-png.flaticon.com/128/15713/15713420.png",
     slug: "instagram-post-generator",
     aiPrompt:
@@ -395,7 +395,7 @@ export default [
     name: "Twitter Thread Ideas",
     desc: "Generate engaging Twitter thread ideas tailored to your niche and audience.",
     category: "Twitter",
-    icon: "https://cdn-icons-png.flaticon.com/128/733/733579.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/733/733635.png",
     aiPrompt:
       "You are a seasoned Twitter strategist with over 15 years of experience. Based on the provided niche and target audience, generate 5 compelling Twitter thread ideas. Each idea should include a captivating hook and a brief outline of the thread's content. Present the results in rich text format.",
     slug: "generate-twitter-thread-ideas",
@@ -417,7 +417,7 @@ export default [
     name: "Viral Tweet Generator",
     desc: "Craft tweets designed to go viral and maximize engagement.",
     category: "Twitter",
-    icon: "https://cdn-icons-png.flaticon.com/128/733/733579.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/733/733588.png",
     aiPrompt:
       "As a social media expert with 15 years of experience, generate 5 tweet ideas based on the provided topic that have the potential to go viral. Each tweet should be concise, engaging, and tailored to resonate with a broad audience. Present the tweets in rich text format.",
     slug: "generate-viral-tweets",
@@ -434,7 +434,7 @@ export default [
     name: "Hashtag Suggestions",
     desc: "Suggest relevant and trending hashtags to enhance your tweet's visibility.",
     category: "Twitter",
-    icon: "https://cdn-icons-png.flaticon.com/128/733/733579.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/733/733601.png",
     aiPrompt:
       "You are a Twitter marketing specialist with over 15 years of experience. Based on the provided tweet content or topic, suggest 10 relevant and trending hashtags to maximize reach and engagement. Present the hashtags in rich text format.",
     slug: "generate-twitter-hashtags",
@@ -451,7 +451,7 @@ export default [
     name: "Hook Generator for Tweets",
     desc: "Create compelling opening lines to capture your audience's attention.",
     category: "Twitter",
-    icon: "https://cdn-icons-png.flaticon.com/128/733/733579.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/733/733621.png",
     aiPrompt:
       "As a copywriting expert with 15 years of experience, generate 5 captivating hooks for tweets based on the provided topic. Each hook should be designed to grab attention and encourage users to read more. Present the hooks in rich text format.",
     slug: "generate-twitter-hooks",
@@ -468,7 +468,7 @@ export default [
     name: "Poll Ideas",
     desc: "Generate engaging poll questions to boost audience interaction.",
     category: "Twitter",
-    icon: "https://cdn-icons-png.flaticon.com/128/733/733579.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/733/733559.png",
     aiPrompt:
       "You are a social media engagement expert with over 15 years of experience. Based on the provided topic, generate 3 engaging poll questions suitable for Twitter. Each question should include 2-4 answer options and be designed to encourage audience participation. Present the polls in rich text format.",
     slug: "generate-twitter-poll-ideas",
@@ -485,7 +485,7 @@ export default [
     name: "Call-To-Action Tweet Templates",
     desc: "Craft effective call-to-action tweets to drive user engagement.",
     category: "Twitter",
-    icon: "https://cdn-icons-png.flaticon.com/128/733/733579.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/733/733586.png",
     aiPrompt:
       "As a seasoned social media strategist with 15 years of experience, generate 5 call-to-action tweet templates based on the provided objective (e.g., website visit, newsletter signup). Each template should be concise, persuasive, and tailored to drive the desired action. Present the templates in rich text format.",
     slug: "generate-twitter-cta-templates",
@@ -503,7 +503,7 @@ export default [
     name: "Startup Idea Validator",
     desc: "Assess the viability of your startup idea with expert-level AI insights.",
     category: "Business / Startup",
-    icon: "https://cdn-icons-png.flaticon.com/128/1041/1041916.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/4370/4370689.png",
     aiPrompt:
       "You are a seasoned startup advisor with over 15 years of experience. Evaluate the provided startup idea by analyzing its market potential, target audience, unique value proposition, and potential challenges. Provide a comprehensive assessment highlighting strengths, weaknesses, opportunities, and threats. Present the evaluation in rich text format.",
     slug: "startup-idea-validator",
@@ -525,7 +525,7 @@ export default [
     name: "Investor Pitch Summary",
     desc: "Craft a compelling investor pitch summary to attract potential investors.",
     category: "Business / Startup",
-    icon: "https://cdn-icons-png.flaticon.com/128/1041/1041916.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/3405/3405805.png",
     aiPrompt:
       "As an experienced pitch deck consultant with 15 years in the industry, generate a concise and persuasive investor pitch summary based on the provided business details. Highlight the problem, solution, market opportunity, business model, and team strengths. Ensure the summary is tailored to appeal to potential investors. Present the summary in rich text format.",
     slug: "investor-pitch-summary",
@@ -547,7 +547,7 @@ export default [
     name: "Mission & Vision Generator",
     desc: "Develop clear and inspiring mission and vision statements for your business.",
     category: "Business / Startup",
-    icon: "https://cdn-icons-png.flaticon.com/128/1041/1041916.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/6815/6815043.png",
     aiPrompt:
       "You are a brand strategist with over 15 years of experience. Based on the provided company values, goals, and target audience, craft compelling mission and vision statements that reflect the organization's purpose and aspirations. Ensure the statements are clear, inspiring, and aligned with the company's strategic direction. Present the statements in rich text format.",
     slug: "mission-vision-generator",
@@ -591,7 +591,7 @@ export default [
     name: "Product Feature List Generator",
     desc: "Generate a comprehensive list of product features to showcase your offering.",
     category: "Business / Startup",
-    icon: "https://cdn-icons-png.flaticon.com/128/1041/1041916.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/10621/10621616.png",
     aiPrompt:
       "You are a product manager with over 15 years of experience. Based on the provided product details, generate a detailed list of features that highlight the product's capabilities and benefits. Ensure the features are clearly described and organized logically. Present the feature list in rich text format.",
     slug: "product-feature-list-generator",
@@ -613,7 +613,7 @@ export default [
     name: "Problem-Solution Statement",
     desc: "Articulate the core problem your business addresses and your solution.",
     category: "Business / Startup",
-    icon: "https://cdn-icons-png.flaticon.com/128/1041/1041916.png",
+    icon: "https://cdn-icons-png.flaticon.com/128/3106/3106773.png",
     aiPrompt:
       "As a business analyst with 15 years of experience, craft a clear and concise problem-solution statement based on the provided information. Define the specific problem faced by the target audience and detail how your product or service offers a solution. Ensure the statement is structured to highlight the value proposition effectively. Present the statement in rich text format.",
     slug: "problem-solution-statement",
@@ -628,116 +628,6 @@ export default [
         label: "Explain your solution",
         field: "textarea",
         name: "solution_description",
-        required: true,
-      },
-    ],
-  },
-  // Ai utility
-  {
-    name: "Summarizer (PDF, Docs, Notes)",
-    desc: "Summarize lengthy documents, PDFs, and notes into concise summaries.",
-    category: "AI Utility / Productivity",
-    icon: "https://cdn-icons-png.flaticon.com/128/3135/3135715.png",
-    aiPrompt:
-      "You are an expert summarizer with over 15 years of experience. Based on the provided document content, generate a concise and coherent summary that captures the key points and main ideas. Ensure the summary is clear and easy to understand. Present the summary in rich text format.",
-    slug: "summarizer",
-    form: [
-      {
-        label: "Paste your document content",
-        field: "textarea",
-        name: "document_content",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Paraphraser / Rewriter",
-    desc: "Rephrase text to improve clarity and avoid plagiarism.",
-    category: "AI Utility / Productivity",
-    icon: "https://cdn-icons-png.flaticon.com/128/3135/3135715.png",
-    aiPrompt:
-      "As a professional writer with 15 years of experience, rephrase the provided text to enhance clarity and originality while preserving the original meaning. Ensure the rewritten text is fluent and free of plagiarism. Present the rewritten text in rich text format.",
-    slug: "paraphraser-rewriter",
-    form: [
-      {
-        label: "Enter text to paraphrase",
-        field: "textarea",
-        name: "text_to_paraphrase",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Tone Changer (Formal, Casual, Persuasive, etc.)",
-    desc: "Adjust the tone of your text to suit different contexts.",
-    category: "AI Utility / Productivity",
-    icon: "https://cdn-icons-png.flaticon.com/128/3135/3135715.png",
-    aiPrompt:
-      "You are a communication specialist with over 15 years of experience. Based on the provided text and selected tone, rewrite the text to match the desired tone (e.g., formal, casual, persuasive). Ensure the adjusted text maintains the original message while reflecting the specified tone. Present the adjusted text in rich text format.",
-    slug: "tone-changer",
-    form: [
-      {
-        label: "Enter text to adjust",
-        field: "textarea",
-        name: "text_to_adjust",
-        required: true,
-      },
-      {
-        label: "Select desired tone",
-        field: "select",
-        name: "desired_tone",
-        options: ["Formal", "Casual", "Persuasive", "Friendly", "Professional"],
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Bullet Point Expander",
-    desc: "Expand bullet points into detailed paragraphs.",
-    category: "AI Utility / Productivity",
-    icon: "https://cdn-icons-png.flaticon.com/128/3135/3135715.png",
-    aiPrompt:
-      "As an experienced content writer with 15 years of expertise, expand the provided bullet points into comprehensive paragraphs. Ensure each paragraph elaborates on the bullet point, providing clarity and additional information. Present the expanded content in rich text format.",
-    slug: "bullet-point-expander",
-    form: [
-      {
-        label: "Enter bullet points",
-        field: "textarea",
-        name: "bullet_points",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Grammar Fixer",
-    desc: "Correct grammatical errors and improve sentence structure.",
-    category: "AI Utility / Productivity",
-    icon: "https://cdn-icons-png.flaticon.com/128/3135/3135715.png",
-    aiPrompt:
-      "You are a seasoned editor with over 15 years of experience. Review the provided text and correct any grammatical errors, punctuation mistakes, and awkward phrasing. Ensure the revised text is grammatically correct and reads smoothly. Present the corrected text in rich text format.",
-    slug: "grammar-fixer",
-    form: [
-      {
-        label: "Enter text to correct",
-        field: "textarea",
-        name: "text_to_correct",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Text to Hashtags / Emojis",
-    desc: "Convert text into relevant hashtags and emojis for social media.",
-    category: "AI Utility / Productivity",
-    icon: "https://cdn-icons-png.flaticon.com/128/3135/3135715.png",
-    aiPrompt:
-      "As a social media expert with 15 years of experience, analyze the provided text and generate a list of relevant hashtags and emojis to enhance engagement on social media platforms. Ensure the hashtags are trending and the emojis align with the content's tone. Present the hashtags and emojis in rich text format.",
-    slug: "text-to-hashtags-emojis",
-    form: [
-      {
-        label: "Enter text to convert",
-        field: "textarea",
-        name: "text_to_convert",
         required: true,
       },
     ],

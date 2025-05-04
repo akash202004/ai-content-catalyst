@@ -8,7 +8,7 @@ import Templates from "@/app/(data)/Templates";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import { chatSession } from "@/utils/aiModel";
+import { chatSession } from "@/utils/geminiModel";
 import { useUser } from "@clerk/nextjs";
 import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
 import { toast } from "react-toastify";

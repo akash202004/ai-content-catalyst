@@ -9,10 +9,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { chatSession } from "@/utils/aiModel";
-import { db } from "@/db/index";
-import { AIOutput } from "@/db/schema";
 import { useUser } from "@clerk/nextjs";
-import moment from "moment";
 import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
 import { toast } from "react-toastify";
 import { UpdateCredit } from "@/app/(context)/UpdateCredit";
@@ -84,7 +81,6 @@ const CreateNewContent = (props: PROPS) => {
     formData,
     aiResponse,
     templateSlug,
-    createdBy,
   }: AIOutputData) => {
     try {
       const result = await createAiOutput({

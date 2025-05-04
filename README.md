@@ -33,11 +33,14 @@ Generate blog titles, Instagram hashtags, YouTube descriptions, and much more wi
   /(data)  
   /dashboard
     /_components
+    /simulation
     /billing
     /content
     /history
     /settings
 /components
+/db
+/controllers
 /lib
 /utils
 /public

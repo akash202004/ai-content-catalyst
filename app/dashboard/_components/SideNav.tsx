@@ -1,5 +1,11 @@
 "use client";
-import { FileClock, Home, Settings, WalletCards, TrendingUp } from "lucide-react";
+import {
+  FileClock,
+  Home,
+  Settings,
+  WalletCards,
+  TrendingUp,
+} from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -45,11 +51,11 @@ const SideNav = () => {
         </Link>
       </div>
       <hr className="my-[15px] border shadow-sm" />
-      <div className="mt-4">
+      <div className="mt-4 ">
         {MenuList.map((menu, index) => (
           <Link href={menu.path} key={index}>
             <div
-              className={`flex gap-2 mb-2 p-3 hover:bg-primary hover:text-white rounded-lg cursor-pointer items-center ${
+              className={`flex gap-2 mb-4 p-3 rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 border border-black  hover:bg-primary hover:text-white cursor-pointer items-center ${
                 path == menu.path ? "bg-primary text-white" : ""
               }`}
             >
@@ -59,7 +65,7 @@ const SideNav = () => {
           </Link>
         ))}
       </div>
-      <div className="absolute bottom-10 left-0 w-full">
+      <div className="absolute bottom-0 left-0 w-full">
         <UsageTrack />
       </div>
     </div>

@@ -12,7 +12,7 @@ const Header = () => {
   };
 
   return (
-    <div className="p-5 shadow-sm border-b-2 flex justify-between items-center bg-white">
+    <div className="p-4 shadow-sm border-b-2 flex justify-between items-center bg-white">
       <div>
         <Button
           onClick={handleClick}
@@ -23,7 +23,7 @@ const Header = () => {
         </Button>
       </div>
       <div className="flex items-center gap-5">
-        <h2 className="text-white bg-primary rounded-full text-sm p-3">
+        <h2 className="text-white bg-primary rounded-2xl border border-black text-sm p-3">
           <Link href={"/dashboard/billing"}>
             Join Membership just for $5/Month
           </Link>
@@ -33,6 +33,11 @@ const Header = () => {
             userProfileMode="navigation"
             userProfileUrl="/dashboard/setting"
             afterSignOutUrl="/"
+            appearance={{
+              elements: {
+                userButtonAvatarBox: "w-10 h-10 border border-black",
+              },
+            }}
           />
         </Link>
       </div>

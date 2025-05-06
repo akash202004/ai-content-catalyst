@@ -3,7 +3,7 @@ import "@toast-ui/editor/dist/toastui-editor.css";
 import { Editor } from "@toast-ui/react-editor";
 import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
-import {toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 interface PROPS {
   aiOutput: string;
@@ -30,7 +30,7 @@ const OutputSection = ({ aiOutput }: PROPS) => {
   };
 
   return (
-    <div className="bg-white shadow-lg border rounded-lg">
+    <div className="bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 border border-black p-2">
       <div className="flex justify-between items-center p-5">
         <h2 className="text-lg font-semibold">Your Result</h2>
         <Button

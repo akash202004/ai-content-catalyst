@@ -30,7 +30,7 @@ const FormSection = ({ selectedTemplate, userFormInput, loading }: PROPS) => {
   };
 
   return (
-    <div className="p-5 shadow-md border rounded-lg bg-white">
+    <div className="p-5 bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 border border-black">
       <Image
         src={selectedTemplate?.icon ?? ""}
         alt="icon"

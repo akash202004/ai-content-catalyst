@@ -22,7 +22,7 @@ const CategoryTabs = ({ selectedCategory, onSelectCategory }: Props) => {
         <button
           key={cat}
           onClick={() => onSelectCategory(cat)}
-          className={`px-4 py-2 rounded-full border ${
+          className={`px-6 py-2 rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 border border-black ${
             selectedCategory === cat
               ? "bg-black text-white"
               : "bg-white text-black"

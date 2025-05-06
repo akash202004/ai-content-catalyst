@@ -115,7 +115,7 @@ export default function Home() {
     <div>
       <div className="flex items-center justify-between border-b-2 shadow-md p-3 px-10">
         <Image src={"./logo.svg"} alt="logo" height={100} width={100} />
-        <Button onClick={handleButtonClick} variant={"outline"} className="p-6">
+        <Button onClick={handleButtonClick} variant="outline" className="p-6">
           Get Started
         </Button>
       </div>
@@ -132,8 +132,8 @@ export default function Home() {
         </p>
         <Button
           onClick={handleButtonClick}
-          variant={"outline"}
-          className="mt-5 px-12 py-6 text-2xl shadow-md outline-2 bg-primary text-white"
+          variant="outline"
+          className="mt-5 px-12 py-6 text-2xl bg-primary text-white"
         >
           Get Started
         </Button>
@@ -199,7 +199,7 @@ export default function Home() {
           </ContainerScroll>
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full sm:p-6 md:p-8">
         <WobbleCard
           containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[500px] lg:min-h-[300px]"
           className=""
@@ -250,7 +250,7 @@ export default function Home() {
           />
         </WobbleCard>
       </div>
-      <div className="py-10 mt-20 flex justify-center items-center">
+      <div className="py-10 sm:p-6 md:p-8 mt-20 flex justify-center items-center">
         <div className="text-5xl mx-auto font-normal text-neutral-700 dark:text-neutral-400">
           Choose Your Plans to
           <FlipWords words={words} /> <br />
@@ -284,28 +284,65 @@ export default function Home() {
           />
         </Card>
       </div>
-      <div className=" mt-20 h-44 font-bold relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center">
-        <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+      <footer className="w-full mt-10 bg-slate-900 text-neutral-300 py-10 px-4">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {/* Company Info */}
+          <div>
+            <h2 className="text-xl font-semibold text-white">
+              AI Content Catalyst
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed">
+              Empowering creators with AI-driven tools.
+               Generate smarter, faster, better.
+            </p>
+          </div>
 
-        <Boxes />
-        <h1
-          className={cn(
-            "md:text-[50px] text-xl relative z-20 bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-slate-200 "
-          )}
-        >
-          Akash Laha
-        </h1>
-        <div className="flex justify-center items-center gap-10 mt-1">
-          <p className="text-center mt-2 text-neutral-300 relative z-20">
-            <Link href={"https://www.linkedin.com/in/akash-laha-799427244/"}>
-              @LinkedIn
-            </Link>
-          </p>
-          <p className="text-center mt-2 text-neutral-300 relative z-20">
-            <Link href={"https://github.com/akash202004"}>@Github</Link>
-          </p>
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-3">
+              Quick Links
+            </h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li>
+                <Link href="/dashboard">Dashboard</Link>
+              </li>
+              <li>
+                <Link href="/dashboard/billing">Pricing</Link>
+              </li>
+              <li>
+                <Link href="/dashboard/profile">Profile</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Connect */}
+          <div>
+            <h3 className="text-lg font-semibold text-white mb-3">Connect</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href="https://www.linkedin.com/in/akash-laha-799427244/"
+                  target="_blank"
+                >
+                  LinkedIn
+                </Link>
+              </li>
+              <li>
+                <Link href="https://github.com/akash202004" target="_blank">
+                  GitHub
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
+
+        <div className="mt-10 border-t border-gray-700 pt-4 text-center text-xs text-gray-400">
+          © {new Date().getFullYear()} Akash Laha. All rights reserved.
+        </div>
+      </footer>
     </div>
   );
 }

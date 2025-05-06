@@ -81,7 +81,7 @@ const SettingsPage = () => {
           <Button
             variant="secondary"
             size="sm"
-            className="mt-3 text-blue-600 hover:underline text-sm font-medium"
+            className="mt-3 text-blue-600 text-sm font-medium"
           >
             Update Password
           </Button>
@@ -98,7 +98,7 @@ const SettingsPage = () => {
           <Button
             variant="secondary"
             size="sm"
-            className="mt-3 text-blue-600 hover:underline text-sm font-medium"
+            className="mt-3 text-blue-600  text-sm font-medium"
           >
             Edit Preferences
           </Button>
@@ -115,7 +115,7 @@ const SettingsPage = () => {
           <Button
             variant="destructive"
             size="sm"
-            className="mt-3 text-red-600 hover:underline text-sm font-medium"
+            className="mt-3 text-red-600 text-sm font-medium"
           >
             Delete Account
           </Button>
@@ -126,7 +126,7 @@ const SettingsPage = () => {
           <Button
             variant="destructive"
             // onClick={() => signOut({ redirectUrl: "/" })}
-            size="default"
+            size="sm"
             className="w-full sm:w-auto"
           >
             Logout

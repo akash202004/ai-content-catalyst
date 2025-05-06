@@ -14,9 +14,13 @@ const SettingsPage = () => {
     console.log("Updated:", { name, email });
   };
 
+  const handleDeleteAccount = async () => {
+    console.log("Account deleted");
+  };
+
   return (
     <div className="min-h-screen p-5">
-      <div className="max-w-4xl mx-auto flex flex-col gap-5">
+      <div className="w-full flex flex-col gap-5">
         {/* Profile Card */}
         <div className="bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 mt-5 border border-black p-5">
           <div className="flex items-center gap-4">
@@ -115,6 +119,7 @@ const SettingsPage = () => {
           <Button
             variant="destructive"
             size="sm"
+            onClick={() => handleDeleteAccount()}
             className="mt-3 text-red-600 text-sm font-medium"
           >
             Delete Account

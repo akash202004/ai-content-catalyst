@@ -12,7 +12,7 @@ const Header = () => {
   };
 
   return (
-    <div className="p-4 shadow-sm border-b-2 flex justify-between items-center bg-white">
+    <div className="p-4 shadow-sm border-b border-black flex justify-between items-center bg-white">
       <div>
         <Button
           onClick={handleClick}

@@ -65,7 +65,7 @@ const UsageTrack = () => {
   return (
     <div className="m-5">
       <div className="bg-primary text-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 border border-black p-3">
-        <h2 className="font-md">Credit</h2>
+        <h2 className="font-sm">Credit</h2>
         <div className="bg-[#b48bff] w-full rounded-full">
           <div
             className="h-2 bg-white rounded-full"

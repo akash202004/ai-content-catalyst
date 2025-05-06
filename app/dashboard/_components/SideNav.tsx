@@ -54,12 +54,12 @@ const SideNav = () => {
         {MenuList.map((menu, index) => (
           <Link href={menu.path} key={index}>
             <div
-              className={`flex gap-2 mb-4 p-3 rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 border border-black  hover:bg-primary hover:text-white cursor-pointer items-center ${
+              className={`flex gap-2 mb-4 p-2 rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 border border-black  hover:bg-primary hover:text-white cursor-pointer items-center ${
                 path == menu.path ? "bg-primary text-white" : ""
               }`}
             >
               <menu.icon className="h-7" />
-              <h2 className="text-lg">{menu.name}</h2>
+              <h2 className="text-md">{menu.name}</h2>
             </div>
           </Link>
         ))}

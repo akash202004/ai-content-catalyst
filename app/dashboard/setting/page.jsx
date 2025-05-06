@@ -3,6 +3,7 @@ import { useUser, signOut } from "@clerk/nextjs";
 import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+// import { deleteUserById } from "@/controllers/userController";
 const SettingsPage = () => {
   const { user } = useUser();
   const [name, setName] = useState(user?.fullName || "");
@@ -15,7 +16,15 @@ const SettingsPage = () => {
   };
 
   const handleDeleteAccount = async () => {
-    console.log("Account deleted");
+    // const confirmDelete = await deleteUserById(user?.id);
+    // console.log(confirmDelete);
+    // if (confirmDelete) {
+    //   alert("Account deleted successfully.");
+    //   signOut({ redirectUrl: "/" });
+    // } else {
+    //   alert("Failed to delete account.");
+    // }
+    console.log("Account deleted successfully.");
   };
 
   return (

@@ -30,9 +30,9 @@ const page = () => {
         }
       }
     };
-  
+
     syncUser();
-  }, [user]);  
+  }, [user]);
 
   return (
     <div>

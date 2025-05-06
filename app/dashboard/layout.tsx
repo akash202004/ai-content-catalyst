@@ -12,7 +12,7 @@ function layout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <TotalUsageContext.Provider value={{ totalUsage, setTotalUsage }}>
       <UpdateCredit.Provider value={{ updateCredit, setUpdateCredit }}>
-        <div className="bg-slate-100 h-screen">
+        <div className="bg-slate-100 h-full">
           <div className="md:w-64 md:block hidden fixed">
             <SideNav />
           </div>

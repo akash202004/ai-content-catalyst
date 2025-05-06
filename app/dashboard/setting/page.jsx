@@ -15,10 +15,10 @@ const SettingsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-5">
+    <div className="min-h-screen p-5">
       <div className="max-w-4xl mx-auto flex flex-col gap-5">
         {/* Profile Card */}
-        <div className="bg-white p-6 rounded-2xl shadow-md">
+        <div className="bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 mt-5 border border-black p-5">
           <div className="flex items-center gap-4">
             <Image
               src={user?.imageUrl || "/placeholder.jpg"}
@@ -37,7 +37,7 @@ const SettingsPage = () => {
         </div>
 
         {/* Info Edit Card */}
-        <div className="bg-white p-6 rounded-2xl shadow-md space-y-6">
+        <div className="bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)]  hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 mt-2 border border-black p-5 space-y-6">
           <h2 className="text-xl font-semibold text-gray-800">
             Edit Personal Information
           </h2>
@@ -71,7 +71,7 @@ const SettingsPage = () => {
         </div>
 
         {/* Password Card */}
-        <div className="bg-white p-6 rounded-2xl shadow-md">
+        <div className="bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)]  hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 mt-2 border border-black p-5">
           <h2 className="text-xl font-semibold text-gray-800 mb-2">
             Password Settings
           </h2>
@@ -88,7 +88,7 @@ const SettingsPage = () => {
         </div>
 
         {/* Notification Card */}
-        <div className="bg-white p-6 rounded-2xl shadow-md">
+        <div className="bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)]  hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 mt-2 border border-black p-5">
           <h2 className="text-xl font-semibold text-gray-800 mb-2">
             Notification Preferences
           </h2>
@@ -105,7 +105,7 @@ const SettingsPage = () => {
         </div>
 
         {/* Delete Account Card */}
-        <div className="bg-red-50 p-6 rounded-2xl border border-red-200 shadow-md">
+        <div className="bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)]  hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 mt-2 border border-black p-5">
           <h2 className="text-xl font-semibold text-red-600 mb-2">
             Delete Account
           </h2>
@@ -122,7 +122,7 @@ const SettingsPage = () => {
         </div>
 
         {/* Logout Button */}
-        <div className="flex justify-center">
+        <div className="flex justify-center ">
           <Button
             variant="destructive"
             // onClick={() => signOut({ redirectUrl: "/" })}

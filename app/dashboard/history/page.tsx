@@ -3,8 +3,7 @@ import { getAiOutputById } from "@/controllers/aiOutputController";
 import { cleanHtmlText } from "@/utils/cleanHtmlText";
 import { useUser } from "@clerk/nextjs";
 import React, { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 export interface HISTORY {
   formData: string;
@@ -50,7 +49,7 @@ const History = () => {
 
       const data: HISTORY[] = rawData.map((item: any) => ({
         ...item,
-        createdAt: item.createdAt ? new Date(item.createdAt) : null, 
+        createdAt: item.createdAt ? new Date(item.createdAt) : null,
       }));
 
       setHistoryData(data);
@@ -70,7 +69,7 @@ const History = () => {
   }, [user]);
 
   return (
-    <div className="m-5 bg-white p-5 rounded-2xl shadow-md">
+    <div className="m-5 bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)]  hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 mt-5 border border-black p-5">
       <h1 className="text-4xl font-bold">History</h1>
       <p className="text-sm mb-5">
         Search your previously generated AI content
@@ -100,7 +99,9 @@ const History = () => {
                 <p>{item.templateSlug}</p>
               </div>
               <div className="line-clamp-4 col-span-2">
-                <p>{cleanHtmlText(item.aiResponse || "No response available")}</p>
+                <p>
+                  {cleanHtmlText(item.aiResponse || "No response available")}
+                </p>
               </div>
               <div>
                 <p>{formatDate(item.createdAt)}</p>
@@ -117,8 +118,6 @@ const History = () => {
           ))}
         </>
       )}
-
-      <ToastContainer />
     </div>
   );
 };

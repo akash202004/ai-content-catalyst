@@ -65,7 +65,7 @@ const billing = () => {
         Upgrade to a Monthly Plan
       </h1>
       <div className="flex relative justify-center gap-10 flex-wrap">
-        <div className=" bg-white shadow-md rounded-lg px-4 flex flex-col">
+        <div className=" bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)]  hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 p-5 mt-5 border border-black px-4 flex flex-col">
           <div className="text-center">
             <p className="mt-6 mb-3">Free</p>
             <h1 className="font-bold text-3xl mb-2">0$ / month</h1>
@@ -78,7 +78,7 @@ const billing = () => {
           </div>
           <Button className="rounded-2xl m-5">Currently Active Plan</Button>
         </div>
-        <div className="bg-white shadow-md rounded-lg px-4 flex flex-col">
+        <div className=" bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)]  hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 p-5 mt-5 border border-black px-4 flex flex-col">
           <div className="text-center">
             <p className="mt-6 mb-3">Monthly</p>
             <h1 className="font-bold text-3xl mb-2">5$ / month</h1>
@@ -97,7 +97,7 @@ const billing = () => {
             Upgrade Plan
           </Button>
         </div>
-        <div className="bg-white shadow-md rounded-lg px-4 flex flex-col">
+        <div className=" bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)]  hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 p-5 mt-5 border border-black px-4 flex flex-col">
           <div className="text-center">
             <p className="mt-6 mb-3">Full Time</p>
             <h1 className="font-bold text-3xl mb-2">50$</h1>

@@ -3,7 +3,7 @@
 import { chatSession } from "@/utils/geminiModel";
 import ReactMarkdown from "react-markdown";
 import { useUser } from "@clerk/nextjs";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import { Bar } from "react-chartjs-2";
@@ -202,7 +202,7 @@ const SimulationPage = () => {
 
           <button
             onClick={() => setShowPreview(true)}
-            disabled={!description || !imagePreview}
+            // disabled={!description || !imagePreview}
             className="bg-blue-600 text-white px-6 py-2 rounded"
           >
             Preview Post
@@ -211,7 +211,7 @@ const SimulationPage = () => {
       )}
 
       {showPreview && (
-        <div className="mt-8 border rounded overflow-hidden shadow bg-white">
+        <div className="mt-8 overflow-hidden sbg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)]  hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 p-5 border border-black">
           <div className="p-4 border-b">
             <div className="flex items-center space-x-3">
               <Image
@@ -262,16 +262,17 @@ const SimulationPage = () => {
 
       {report && (
         <div className="mt-6">
-          <h3 className="font-semibold text-xl mb-4">Simulation Results</h3>
-          <div className="flex ">
-          <Bar data={chartData} options={{ responsive: true }} />
+          <div className="bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)]  hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 p-5 border border-black">
+            <h3 className="font-semibold text-xl mb-4">Simulation Results</h3>
+            <Bar data={chartData} options={{ responsive: true }} />
           </div>
-          <div>
-          <pre className="mt-4 bg-gray-100 p-4 rounded whitespace-pre-wrap text-sm">
-            <ReactMarkdown>{report}</ReactMarkdown>
-          </pre>
+
+          <div className="bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)]  hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 p-5 mt-5 border border-black">
+            <h3 className="font-semibold text-xl mb-4">Overall Report</h3>
+            <pre className="mt-4 bg-gray-100 p-4 rounded whitespace-pre-wrap text-sm">
+              <ReactMarkdown>{report}</ReactMarkdown>
+            </pre>
           </div>
-          
         </div>
       )}
     </div>

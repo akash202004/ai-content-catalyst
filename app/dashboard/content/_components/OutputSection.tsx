@@ -3,8 +3,7 @@ import "@toast-ui/editor/dist/toastui-editor.css";
 import { Editor } from "@toast-ui/react-editor";
 import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import {toast } from "react-toastify";
 
 interface PROPS {
   aiOutput: string;
@@ -49,7 +48,6 @@ const OutputSection = ({ aiOutput }: PROPS) => {
         initialEditType="wysiwyg"
         useCommandShortcut={true}
       />
-      <ToastContainer />
     </div>
   );
 };

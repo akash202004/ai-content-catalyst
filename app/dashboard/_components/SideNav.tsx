@@ -44,13 +44,13 @@ const SideNav = () => {
   const path = usePathname();
 
   return (
-    <div className="h-screen p-5 relative shadow-sm border bg-white">
+    <div className="h-screen p-5 relative shadow-sm border-r border-black bg-white">
       <div className="flex justify-center">
         <Link href={"/dashboard"}>
           <Image src={"/logo.svg"} alt="logo" width={100} height={100} />
         </Link>
       </div>
-      <hr className="my-[15px] border shadow-sm" />
+      <hr className="my-[15px] border border-slate-800 shadow-sm" />
       <div className="mt-4 ">
         {MenuList.map((menu, index) => (
           <Link href={menu.path} key={index}>

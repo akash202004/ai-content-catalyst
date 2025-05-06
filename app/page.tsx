@@ -113,148 +113,161 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex items-center justify-between border-b-2 shadow-md p-3 px-10">
-        <Image src={"./logo.svg"} alt="logo" height={100} width={100} />
-        <Button onClick={handleButtonClick} variant="outline" className="p-6">
-          Get Started
-        </Button>
-      </div>
-      <div className="flex items-center justify-center flex-col h-screen relative">
-        <h1 className="text-4xl font-bold md:text-4xl lg:text-6xl max-w-7xl mx-auto text-center relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
-          Transform Ideas into Engaging{" "}
-          <span className="text-primary">Content</span> <br />
-          <Cover className="p-1">Content Catalyst </Cover>
-        </h1>
-        <p className="text-sm mt-5">
-          Leverage the power of AI to create captivating content for blogs,
-          social media, and more. Get started today and watch your creativity
-          flow effortlessly.
-        </p>
-        <Button
-          onClick={handleButtonClick}
-          variant="outline"
-          className="mt-5 px-12 py-6 text-2xl bg-primary text-white"
-        >
-          Get Started
-        </Button>
-        <div className="grid grid-cols-4 mt-[30vh] m-20 gap-20">
-          <div>
-            <div className="bg-primary rounded-lg p-4 w-14">
-              <LayoutTemplate className=" text-white" />
-            </div>
-            <h1 className="font-bold mt-4">30+ templates</h1>
-            <p className="mt-4">
-              Responsive, and mobile-first project on the web
-            </p>
+      <div className="overflow-x-hidden">
+        {/* Header */}
+        <header className="flex items-center justify-between border-b shadow-md px-6 py-4 md:px-10">
+          <Image src="/logo.svg" alt="logo" height={60} width={60} />
+          <Button
+            onClick={handleButtonClick}
+            variant="outline"
+            className="px-6 py-2 text-sm md:text-base"
+          >
+            Get Started
+          </Button>
+        </header>
+
+        {/* Hero Section */}
+        <section className="flex flex-col items-center justify-center text-center px-4 md:px-10 py-16 md:py-24">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
+            Transform Ideas into Engaging{" "}
+            <span className="text-primary">Content</span>
+            <br />
+            <Cover className="inline-block mt-2">Content Catalyst</Cover>
+          </h1>
+          <p className="text-base md:text-lg mt-6 max-w-2xl">
+            Leverage the power of AI to create captivating content for blogs,
+            social media, and more. Get started today and watch your creativity
+            flow effortlessly.
+          </p>
+          <Button
+            onClick={handleButtonClick}
+            className="mt-6 px-8 py-4 text-lg bg-primary text-white"
+          >
+            Get Started
+          </Button>
+
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-20 w-full px-4">
+            {[
+              {
+                icon: <LayoutTemplate className="text-white" />,
+                title: "30+ templates",
+                desc: "Responsive, and mobile-first project on the web",
+              },
+              {
+                icon: <CupSoda className="text-white" />,
+                title: "Customizable",
+                desc: "Components are easily customized and extendable",
+              },
+              {
+                icon: <BookOpen className="text-white" />,
+                title: "Free to Use",
+                desc: "Every component and plugin is well documented",
+              },
+              {
+                icon: <MessageCircleDashed className="text-white" />,
+                title: "24/7 Support",
+                desc: "Contact 24 hours a day and 7 days a week",
+              },
+            ].map((item, idx) => (
+              <div key={idx} className="text-left">
+                <div className="bg-primary rounded-lg p-4 w-14 mb-4">
+                  {item.icon}
+                </div>
+                <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                <p className="text-sm text-neutral-700 dark:text-neutral-300">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
           </div>
-          <div>
-            <div className="bg-primary rounded-lg p-4 w-14">
-              <CupSoda className=" text-white" />
-            </div>
-            <h1 className="font-bold mt-4">Customizable</h1>
-            <p className="mt-4">
-              Components are easily customized and extendable
-            </p>
-          </div>
-          <div>
-            <div className="bg-primary rounded-lg p-4 w-14">
-              <BookOpen className=" text-white" />
-            </div>
-            <h1 className="font-bold mt-4">Free to Use</h1>
-            <p className="mt-4">
-              Every component and plugin is well documented
-            </p>
-          </div>
-          <div>
-            <div className="bg-primary rounded-lg p-4 w-14">
-              <MessageCircleDashed className=" text-white" />
-            </div>
-            <h1 className="font-bold mt-4">24/7 Support</h1>
-            <p className="mt-4">Contact 24 hours a day and 7 days a week</p>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div className="flex flex-col overflow-hidden">
+        </section>
+
+        {/* Scroll Animation Section */}
+        <section className="px-4">
           <ContainerScroll
             titleComponent={
-              <>
-                <h1 className="text-4xl font-semibold text-black dark:text-white">
-                  Unleash the power of <br />
-                  <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-                    AI Content Creation
-                  </span>
-                </h1>
-              </>
+              <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white">
+                Unleash the power of <br />
+                <span className="block text-primary mt-2">
+                  AI Content Creation
+                </span>
+              </h2>
             }
           >
             <Image
-              src={`/sreen.png`}
+              src="/sreen.png"
               alt="hero"
               height={720}
               width={1400}
-              className="mx-auto rounded-2xl object-cover h-full object-left-top"
+              className="mx-auto rounded-2xl object-cover object-left-top h-full"
               draggable={false}
             />
           </ContainerScroll>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full sm:p-6 md:p-8">
-        <WobbleCard
-          containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[500px] lg:min-h-[300px]"
-          className=""
-        >
-          <div className="max-w-xs">
-            <h2 className="text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-              AI-Powered Content Creation
-            </h2>
-            <p className="mt-4 text-left  text-base/6 text-neutral-200">
-              Generate high-quality, tailored content for blogs, Instagram
-              posts, YouTube subtitles, and beyond. Simply input your keywords,
-              and let our AI handle the rest.
+        </section>
+
+        {/* Wobble Card Section */}
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-10 py-16 max-w-7xl mx-auto">
+          <WobbleCard containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[300px]">
+            <div className="max-w-xs">
+              <h3 className="text-xl lg:text-3xl font-semibold text-white">
+                AI-Powered Content Creation
+              </h3>
+              <p className="mt-4 text-neutral-200">
+                Generate high-quality, tailored content for blogs, Instagram
+                posts, YouTube subtitles, and beyond. Simply input your
+                keywords, and let our AI handle the rest.
+              </p>
+            </div>
+            <Image
+              src="/sideone.png"
+              width={600}
+              height={600}
+              alt="side visual"
+              className="absolute -right-4 lg:-right-[40%] bottom-0 object-contain rounded-2xl grayscale"
+            />
+          </WobbleCard>
+          <WobbleCard containerClassName="col-span-1 min-h-[300px]">
+            <h3 className="text-xl lg:text-3xl font-semibold text-white">
+              Versatile Content Options
+            </h3>
+            <p className="mt-4 text-neutral-200">
+              From Instagram hashtags to SEO-optimized articles, our tool offers
+              a variety of content types to fit your specific needs.
             </p>
-          </div>
-          <Image
-            src="/sideone.png"
-            width={600}
-            height={600}
-            alt="linear demo image"
-            className="absolute -right-4 lg:-right-[40%] grayscale filter -bottom-10 object-contain rounded-2xl"
-          />
-        </WobbleCard>
-        <WobbleCard containerClassName="col-span-1 min-h-[300px]">
-          <h2 className="max-w-80  text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-            Versatile Content Options
+          </WobbleCard>
+          <WobbleCard containerClassName="col-span-1 lg:col-span-3 bg-blue-900 min-h-[500px] lg:min-h-[600px] xl:min-h-[300px]">
+            <div className="max-w-sm">
+              <h2 className="max-w-sm md:max-w-lg  text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
+                Comprehensive History & Billing
+              </h2>
+              <p className="mt-4 max-w-[26rem] text-left  text-base/6 text-neutral-200">
+                Keep track of your past content creations and easily manage your
+                billing, all from one convenient dashboard.
+              </p>
+            </div>
+            <Image
+              src="/sidetwo.png"
+              width={400}
+              height={500}
+              alt="linear demo image"
+              className="absolute -right-10 md:-right-[40%] lg:-right-[10%] -bottom-10 object-contain rounded-2xl"
+            />
+          </WobbleCard>
+        </section>
+      </div>
+
+      {/* Plans Card Section */}
+      <div className="mt-24 px-4 sm:px-6 md:px-8 py-12 flex justify-center items-center text-center">
+        <div className="max-w-4xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-neutral-800 dark:text-neutral-200 leading-snug">
+            Choose Your Plan to{" "}
+            <span className="inline-block text-blue-600 dark:text-blue-400">
+              <FlipWords words={words} />
+            </span>
+            <br className="hidden sm:block" />
+            and Unlock the Full Potential of Our Website
           </h2>
-          <p className="mt-4 max-w-[26rem] text-left  text-base/6 text-neutral-200">
-            From Instagram hashtags to SEO-optimized articles, our tool offers a
-            variety of content types to fit your specific needs.
-          </p>
-        </WobbleCard>
-        <WobbleCard containerClassName="col-span-1 lg:col-span-3 bg-blue-900 min-h-[500px] lg:min-h-[600px] xl:min-h-[300px]">
-          <div className="max-w-sm">
-            <h2 className="max-w-sm md:max-w-lg  text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-              Comprehensive History & Billing
-            </h2>
-            <p className="mt-4 max-w-[26rem] text-left  text-base/6 text-neutral-200">
-              Keep track of your past content creations and easily manage your
-              billing, all from one convenient dashboard.
-            </p>
-          </div>
-          <Image
-            src="/sidetwo.png"
-            width={400}
-            height={500}
-            alt="linear demo image"
-            className="absolute -right-10 md:-right-[40%] lg:-right-[10%] -bottom-10 object-contain rounded-2xl"
-          />
-        </WobbleCard>
-      </div>
-      <div className="py-10 sm:p-6 md:p-8 mt-20 flex justify-center items-center">
-        <div className="text-5xl mx-auto font-normal text-neutral-700 dark:text-neutral-400">
-          Choose Your Plans to
-          <FlipWords words={words} /> <br />
-          and Unlock the Full Potential of Our Website
         </div>
       </div>
       <div className="flex flex-col lg:flex-row items-center justify-center bg-white dark:bg-black w-full gap-4 mx-auto px-8">
@@ -284,6 +297,8 @@ export default function Home() {
           />
         </Card>
       </div>
+
+      {/*Footer Section */}
       <footer className="w-full mt-10 bg-slate-900 text-neutral-300 py-10 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {/* Company Info */}
@@ -292,8 +307,8 @@ export default function Home() {
               AI Content Catalyst
             </h2>
             <p className="mt-3 text-sm leading-relaxed">
-              Empowering creators with AI-driven tools.
-               Generate smarter, faster, better.
+              Empowering creators with AI-driven tools. Generate smarter,
+              faster, better.
             </p>
           </div>
 

@@ -23,7 +23,7 @@ const Header = () => {
         </Button>
       </div>
       <div className="flex items-center gap-5">
-        <h2 className="text-white bg-primary rounded-2xl border border-black text-sm p-3">
+        <h2 className="text-white bg-primary rounded-2xl border hidden lg:block border-black text-sm p-3">
           <Link href={"/dashboard/billing"}>
             Join Membership just for $5/Month
           </Link>

@@ -142,7 +142,7 @@ export default function Home() {
             <div className="bg-primary rounded-lg p-4 w-14">
               <LayoutTemplate className=" text-white" />
             </div>
-            <h1 className="font-bold mt-4">20+ templates</h1>
+            <h1 className="font-bold mt-4">30+ templates</h1>
             <p className="mt-4">
               Responsive, and mobile-first project on the web
             </p>

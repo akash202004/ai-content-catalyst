@@ -1,12 +1,30 @@
 "use client";
+
+import { chatSession } from "@/utils/geminiModel";
+import ReactMarkdown from "react-markdown";
 import { useUser } from "@clerk/nextjs";
 import React, { useState } from "react";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import { Bar } from "react-chartjs-2";
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const SimulationPage = () => {
   const { user } = useUser();
@@ -15,7 +33,13 @@ const SimulationPage = () => {
   const [tagInput, setTagInput] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [report, setReport] = useState<any | null>(null); // Object for structured report
+  const [report, setReport] = useState<string | null>(null);
+  const [analytics, setAnalytics] = useState({
+    likes: 0,
+    comments: 0,
+    shares: 0,
+    saves: 0,
+  });
   const [loading, setLoading] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [platform, setPlatform] = useState("Instagram");
@@ -23,76 +47,59 @@ const SimulationPage = () => {
   const handleImageUpload = (file: File) => {
     setImage(file);
     const reader = new FileReader();
-    reader.onloadend = () => {
-      setImagePreview(reader.result as string);
-    };
+    reader.onloadend = () => setImagePreview(reader.result as string);
     reader.readAsDataURL(file);
   };
 
+  const extractAnalytics = (text: string) => {
+    return {
+      likes: parseInt(text.match(/Likes:\s*(\d+)/)?.[1] || "0"),
+      comments: parseInt(text.match(/Comments:\s*(\d+)/)?.[1] || "0"),
+      shares: parseInt(text.match(/Shares:\s*(\d+)/)?.[1] || "0"),
+      saves: parseInt(text.match(/Saves:\s*(\d+)/)?.[1] || "0"),
+    };
+  };
+
   const handleSimulation = async () => {
-    if (!description) {
-      toast.error("Please add a description.");
-      return;
-    }
-    if (!tags.length) {
-      toast.error("Please add at least one tag.");
-      return;
-    }
+    if (!description) return toast.error("Please add a description.");
+    if (!tags.length) return toast.error("Please add at least one tag.");
 
     try {
       setLoading(true);
-
       const prompt = `
-      You are a senior social media strategist. Your task is to analyze and simulate the performance of a post on ${platform} based on its content, tone, and hashtags.
+        You are a senior social media strategist. Your task is to analyze and simulate the performance of a post on ${platform}.
 
-      Given:
-      ---
-      Platform: ${platform}
-      Description: "${description}"
-      Tags: ${tags.join(", ")}
-      ---
+        Platform: ${platform}
+        Description: "${description}"
+        Tags: ${tags.join(", ")}
 
-      Do the following:
-      1. **Simulate engagement** from 100 diverse users. For each user, randomly decide:
-        - Whether they liked, commented, shared, or saved the post (or ignored it)
-        - The reason for their interaction (or lack thereof)
-        - How the post made them feel (emotionally or intellectually)
-        - Whether they would follow the poster
+        Do the following:
+        1. Simulate engagement from 100 users (like, comment, share, save, ignore).
+        2. Generate analytics: Likes, Comments, Shares, Saves.
+        3. Provide tips.
 
-      2. **Generate analytics**:
-        - Estimated number of likes, comments, shares, saves, and reach
-        - Engagement rate (%) based on simulated impressions
+        Respond in this format:
+        Summary: ...
+        User Reactions:
+        - ...
+        Estimated Analytics:
+        - Likes: number
+        - Comments: number
+        - Shares: number
+        - Saves: number
+        Recommendations: ...
+      `;
 
-      3. **Provide insights**:
-        - What worked well in the post
-        - What could be improved (content, tags, tone, platform fit)
-        - Tips to optimize future posts for better performance on ${platform}
+      const result = await chatSession.sendMessage(prompt);
+      const text = result?.response.text();
+      setReport(text);
 
-      Output the result in a clean, structured format with headings:
-      - Summary
-      - User Reactions (sample of 5-10)
-      - Estimated Analytics
-      - Recommendations
-    `;
+      const stats = extractAnalytics(text);
+      setAnalytics(stats);
 
-      const res = await fetch("/api/gemini-simulation", {
-        method: "POST",
-        body: JSON.stringify({ prompt }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || "Something went wrong");
-      }
-
-      setReport(data.result);
       toast.success("Simulation completed!");
     } catch (err: any) {
-      toast.error(err.message || "Failed to simulate.");
+      toast.error(err.message || "Simulation failed.");
     } finally {
       setLoading(false);
     }
@@ -105,19 +112,20 @@ const SimulationPage = () => {
     }
   };
 
-  const chartData: any = report ? {
-    labels: ['Likes', 'Comments', 'Shares', 'Saves'],
+  const chartData = {
+    labels: ["Likes", "Comments", "Shares", "Saves"],
     datasets: [
       {
-        label: 'User Interactions',
-        backgroundColor: ['#4CAF50', '#2196F3', '#FF9800', '#F44336'],
-        borderColor: ['#388E3C', '#1976D2', '#F57C00', '#D32F2F'],
-        borderWidth: 1,
+        label: "Estimated Interactions",
+        data: [
+          analytics.likes,
+          analytics.comments,
+          analytics.shares,
+          analytics.saves,
+        ],
+        backgroundColor: ["#4CAF50", "#2196F3", "#FF9800", "#F44336"],
       },
     ],
-  } : {
-    labels: [],
-    datasets: [],
   };
 
   return (
@@ -146,7 +154,7 @@ const SimulationPage = () => {
           <label className="block mb-2 font-medium">Description:</label>
           <textarea
             placeholder="Write your post description..."
-            className="w-full p-4 border rounded mb-4 focus:outline-none focus:ring focus:ring-blue-200"
+            className="w-full p-4 border rounded mb-4"
             rows={5}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -161,11 +169,11 @@ const SimulationPage = () => {
                 onChange={(e) => setTagInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleAddTag()}
                 placeholder="Type a tag and press Enter"
-                className="flex-1 px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-200"
+                className="flex-1 px-4 py-2 border rounded"
               />
               <button
                 onClick={handleAddTag}
-                className="bg-gray-800 text-white px-4 rounded hover:bg-gray-900"
+                className="bg-gray-800 text-white px-4 rounded"
               >
                 Add
               </button>
@@ -195,7 +203,7 @@ const SimulationPage = () => {
           <button
             onClick={() => setShowPreview(true)}
             disabled={!description || !imagePreview}
-            className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-all"
+            className="bg-blue-600 text-white px-6 py-2 rounded"
           >
             Preview Post
           </button>
@@ -211,7 +219,7 @@ const SimulationPage = () => {
                 alt="User Avatar"
                 width={40}
                 height={40}
-                className="rounded-full object-cover border shadow"
+                className="rounded-full"
               />
               <div>
                 <p className="font-semibold">{user?.fullName || "Anonymous"}</p>
@@ -244,7 +252,7 @@ const SimulationPage = () => {
             <button
               onClick={handleSimulation}
               disabled={loading}
-              className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-all"
+              className="w-full py-2 bg-green-600 text-white rounded"
             >
               {loading ? "Simulating..." : "Start Simulation"}
             </button>
@@ -252,11 +260,18 @@ const SimulationPage = () => {
         </div>
       )}
 
-      {/* Chart */}
       {report && (
         <div className="mt-6">
           <h3 className="font-semibold text-xl mb-4">Simulation Results</h3>
+          <div className="flex ">
           <Bar data={chartData} options={{ responsive: true }} />
+          </div>
+          <div>
+          <pre className="mt-4 bg-gray-100 p-4 rounded whitespace-pre-wrap text-sm">
+            <ReactMarkdown>{report}</ReactMarkdown>
+          </pre>
+          </div>
+          
         </div>
       )}
     </div>

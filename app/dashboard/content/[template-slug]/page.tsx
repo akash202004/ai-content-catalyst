@@ -59,7 +59,7 @@ const CreateNewContent = (props: PROPS) => {
       const selectedPrompt = selectedTemplate?.aiPrompt;
       const finalAIPrompt = JSON.stringify(formData) + ", " + selectedPrompt;
       const result = await chatSession.sendMessage(finalAIPrompt);
-      const aiResponseText = await result?.response.text();
+      const aiResponseText = result?.response.text();
       setAiOutput(aiResponseText);
 
       await saveInDb({

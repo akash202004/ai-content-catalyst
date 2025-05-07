@@ -55,25 +55,25 @@ const SettingsPage = () => {
             Edit Personal Information
           </h2>
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium mt-2 text-gray-700">
               Full Name
             </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="mt-1 w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="mt-1 w-full border rounded-md px-4 py-2 border-black"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium mt-2 text-gray-700">
               Email Address
             </label>
             <input
               type="email"
               value={email}
               disabled
-              className="mt-1 w-full bg-gray-100 border border-gray-300 rounded-md px-4 py-2 text-gray-500 cursor-not-allowed"
+              className="mt-1 w-full border-black border rounded-md px-4 py-2 cursor-not-allowed"
             />
           </div>
           <div className="flex justify-end mt-3">

@@ -144,7 +144,7 @@ const SimulationPage = () => {
         <>
           <label className="block mb-2 font-medium">Choose Platform:</label>
           <select
-            className="w-full p-2 border rounded mb-4"
+            className="w-full p-2 border border-black rounded mb-4"
             value={platform}
             onChange={(e) => setPlatform(e.target.value)}
           >

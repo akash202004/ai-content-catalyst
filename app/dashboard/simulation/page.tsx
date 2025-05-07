@@ -3,7 +3,7 @@
 import { chatSession } from "@/utils/geminiModel";
 import ReactMarkdown from "react-markdown";
 import { useUser } from "@clerk/nextjs";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import { Bar } from "react-chartjs-2";
@@ -93,7 +93,7 @@ const SimulationPage = () => {
       `;
 
       const result = await chatSession.sendMessage(prompt);
-      const text = await result?.response.text();
+      const text = result?.response.text();
       setReport(text);
 
       const stats = extractAnalytics(text);
@@ -132,10 +132,10 @@ const SimulationPage = () => {
 
   return (
     <div className="bg-white m-5 p-5 rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 mt-5 border border-black">
-      <h1 className="text-3xl font-bold mb-4 text-center">
-        📊 Post Performance Simulator
+      <h1 className="text-4xl font-bold text-center">
+        Post Performance Simulator
       </h1>
-      <p className="text-gray-600 mb-8 text-center">
+      <p className="text-gray-600 text-sm mb-8 text-center">
         Preview and simulate how your post might perform with AI-generated
         insights.
       </p>
@@ -156,7 +156,7 @@ const SimulationPage = () => {
           <label className="block mb-2 font-medium">Description:</label>
           <textarea
             placeholder="Write your post description..."
-            className="w-full p-4 border rounded mb-4"
+            className="w-full p-4 border border-black rounded mb-4"
             rows={5}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -171,7 +171,7 @@ const SimulationPage = () => {
                 onChange={(e) => setTagInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleAddTag()}
                 placeholder="Type a tag and press Enter"
-                className="flex-1 px-4 py-2 border rounded"
+                className="flex-1 border border-black px-4 py-2 rounded"
               />
               <Button onClick={handleAddTag} variant={"secondary"}>
                 Add

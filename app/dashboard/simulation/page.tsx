@@ -242,13 +242,21 @@ const SimulationPage = () => {
               ))}
             </div>
 
-            <button
+            <Button
               onClick={handleSimulation}
               disabled={loading}
-              className="w-full py-2 bg-green-600 text-white rounded"
+              className="w-full"
             >
               {loading ? "Simulating..." : "Start Simulation"}
-            </button>
+            </Button>
+
+            <Button
+              variant={"secondary"}
+              onClick={() => setShowPreview(false)}
+              className="mt-4 w-full "
+            >
+              Edit Preview
+            </Button>
           </div>
         </div>
       )}

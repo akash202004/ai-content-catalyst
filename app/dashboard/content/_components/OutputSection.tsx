@@ -44,7 +44,7 @@ const OutputSection = ({ aiOutput }: PROPS) => {
       <Editor
         ref={editorRef}
         initialValue="Your result will be displayed here"
-        height="500px"
+        height="430px"
         initialEditType="wysiwyg"
         useCommandShortcut={true}
       />

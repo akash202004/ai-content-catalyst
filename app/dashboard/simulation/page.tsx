@@ -16,6 +16,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { Button } from "@/components/ui/button";
 
 ChartJS.register(
   CategoryScale,
@@ -28,6 +29,7 @@ ChartJS.register(
 
 const SimulationPage = () => {
   const { user } = useUser();
+
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState("");
@@ -91,7 +93,7 @@ const SimulationPage = () => {
       `;
 
       const result = await chatSession.sendMessage(prompt);
-      const text = result?.response.text();
+      const text = await result?.response.text();
       setReport(text);
 
       const stats = extractAnalytics(text);
@@ -129,7 +131,7 @@ const SimulationPage = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
+    <div className="bg-white m-5 p-5 rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 mt-5 border border-black">
       <h1 className="text-3xl font-bold mb-4 text-center">
         📊 Post Performance Simulator
       </h1>
@@ -171,12 +173,9 @@ const SimulationPage = () => {
                 placeholder="Type a tag and press Enter"
                 className="flex-1 px-4 py-2 border rounded"
               />
-              <button
-                onClick={handleAddTag}
-                className="bg-gray-800 text-white px-4 rounded"
-              >
+              <Button onClick={handleAddTag} variant={"secondary"}>
                 Add
-              </button>
+              </Button>
             </div>
             <div className="flex flex-wrap mt-2 gap-2">
               {tags.map((tag, index) => (
@@ -193,25 +192,19 @@ const SimulationPage = () => {
           <input
             type="file"
             accept="image/*"
-            className="mb-4 block w-full"
+            className="mb-4 block w-full rounded border border-black p-2"
             onChange={(e) => {
               const file = e.target.files?.[0];
               if (file) handleImageUpload(file);
             }}
           />
 
-          <button
-            onClick={() => setShowPreview(true)}
-            // disabled={!description || !imagePreview}
-            className="bg-blue-600 text-white px-6 py-2 rounded"
-          >
-            Preview Post
-          </button>
+          <Button onClick={() => setShowPreview(true)}>Preview Post</Button>
         </>
       )}
 
       {showPreview && (
-        <div className="mt-8 overflow-hidden sbg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)]  hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 p-5 border border-black">
+        <div className="mt-8 overflow-hidden bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 p-5 border border-black">
           <div className="p-4 border-b">
             <div className="flex items-center space-x-3">
               <Image
@@ -262,12 +255,12 @@ const SimulationPage = () => {
 
       {report && (
         <div className="mt-6">
-          <div className="bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)]  hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 p-5 border border-black">
+          <div className="bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 p-5 border border-black">
             <h3 className="font-semibold text-xl mb-4">Simulation Results</h3>
             <Bar data={chartData} options={{ responsive: true }} />
           </div>
 
-          <div className="bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)]  hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 p-5 mt-5 border border-black">
+          <div className="bg-white rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 p-5 mt-5 border border-black">
             <h3 className="font-semibold text-xl mb-4">Overall Report</h3>
             <pre className="mt-4 bg-gray-100 p-4 rounded whitespace-pre-wrap text-sm">
               <ReactMarkdown>{report}</ReactMarkdown>

@@ -4,12 +4,11 @@ import { Cover } from "@/components/ui/cover";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import { FlipWords } from "@/components/ui/flip-words";
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
-import { Boxes } from "@/components/ui/background-boxes";
+import Head from "next/head";
 import {
   BookOpen,
   CupSoda,
@@ -17,15 +16,9 @@ import {
   MessageCircleDashed,
 } from "lucide-react";
 import { useState } from "react";
-import { cn } from "@/utils/helperFunction";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 export default function Home() {
-  const redirect = useRouter();
-
-  const handleButtonClick = () => {
-    redirect.push("/dashboard");
-  };
-
   const Card = ({
     title,
     icon,
@@ -109,21 +102,95 @@ export default function Home() {
     );
   };
 
+  const testimonials = [
+    {
+      quote:
+        "This product is revolutionary! It has significantly boosted our productivity.\nHighly recommend to anyone looking to streamline their workflow.",
+      name: "Anna Turner",
+      title: "Director of Marketing, Bright Ideas Ltd.",
+    },
+    {
+      quote:
+        "I’ve been using this for months and it never disappoints.\nThe efficiency and support are unparalleled.",
+      name: "Tom Harris",
+      title: "Head of Operations, MegaCorp",
+    },
+    {
+      quote:
+        "Absolutely love the interface and features!\nIt’s made a massive difference in how my team collaborates.",
+      name: "Rebecca White",
+      title: "Team Lead, Digital Solutions",
+    },
+    {
+      quote:
+        "It’s intuitive, reliable, and a game changer for our workflow.\nI can’t imagine doing our work without it.",
+      name: "Chris Walker",
+      title: "Business Development Manager, FastTrack Ltd.",
+    },
+    {
+      quote:
+        "Great value for money, with all the features we need.\nIt’s made a real impact on our operations.",
+      name: "Lauren King",
+      title: "Product Specialist, Tech World",
+    },
+    {
+      quote:
+        "The design is sleek and user-friendly.\nIt fits perfectly into our existing setup and adds so much value.",
+      name: "Paul Green",
+      title: "Chief Engineer, InnovateTech",
+    },
+    {
+      quote:
+        "This tool has transformed our team’s productivity!\nIt's so easy to use, yet powerful in its results.",
+      name: "Rachel Adams",
+      title: "Customer Support Manager, ServiceNow",
+    },
+    {
+      quote:
+        "I can’t recommend this enough.\nIt’s a must-have for anyone looking to optimize their daily tasks.",
+      name: "Ben Mitchell",
+      title: "CEO, FutureTech Solutions",
+    },
+    {
+      quote:
+        "Every feature is designed with users in mind.\nIt’s the most seamless experience I’ve had with a product in years.",
+      name: "Laura Spencer",
+      title: "Operations Director, CloudForce",
+    },
+    {
+      quote:
+        "It’s a huge time-saver and incredibly reliable.\nOur entire team has benefited from using this tool every day.",
+      name: "David Lee",
+      title: "Lead Developer, DevCore",
+    },
+  ];
+
   const words = ["Free", "Premium", "Ultimate"];
 
   return (
     <div>
+      <Head>
+        <title>AI Content Catalyst</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="Create AI-powered content with ease."
+        />
+        <meta property="og:image" content="/preview.png" />
+      </Head>
+
       <div className="overflow-x-hidden">
         {/* Header */}
         <header className="flex items-center justify-between border-b shadow-md px-6 py-4 md:px-10">
           <Image src="/logo.svg" alt="logo" height={60} width={60} />
-          <Button
-            onClick={handleButtonClick}
-            variant="outline"
-            className="px-6 py-2 text-sm md:text-base"
-          >
-            Get Started
-          </Button>
+          <Link href={"/dashboard"} prefetch={true}>
+            <Button
+              variant="outline"
+              className="px-6 py-2 text-sm md:text-base"
+            >
+              Get Started
+            </Button>
+          </Link>
         </header>
 
         {/* Hero Section */}
@@ -139,12 +206,11 @@ export default function Home() {
             social media, and more. Get started today and watch your creativity
             flow effortlessly.
           </p>
-          <Button
-            onClick={handleButtonClick}
-            className="mt-6 px-8 py-4 text-lg bg-primary text-white"
-          >
-            Get Started
-          </Button>
+          <Link href={"/dashboard"} prefetch={true}>
+            <Button className="mt-6 px-8 py-4 text-lg bg-primary text-white">
+              Get Started
+            </Button>
+          </Link>
 
           {/* Features Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-20 w-full px-4">
@@ -258,7 +324,7 @@ export default function Home() {
       </div>
 
       {/* Plans Card Section */}
-      <div className="mt-24 px-4 sm:px-6 md:px-8 py-12 flex justify-center items-center text-center">
+      <div className="mt-10 px-4 sm:px-6 md:px-8 py-12 flex justify-center items-center text-center">
         <div className="max-w-4xl">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-neutral-800 dark:text-neutral-200 leading-snug">
             Choose Your Plan to{" "}
@@ -297,6 +363,20 @@ export default function Home() {
           />
         </Card>
       </div>
+
+      {/* Testimonial Section */}
+      <section className="mt-28 px-4 md:px-8 lg:px-16">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 text-neutral-800">
+          Our Testimonials
+        </h2>
+        <div className="flex justify-center items-center">
+          <InfiniteMovingCards
+            items={testimonials}
+            direction="left"
+            speed="normal"
+          />
+        </div>
+      </section>
 
       {/*Footer Section */}
       <footer className="w-full mt-10 bg-slate-900 text-neutral-300 py-10 px-4">

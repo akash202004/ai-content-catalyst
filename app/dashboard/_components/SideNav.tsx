@@ -52,7 +52,7 @@ const SideNav = () => {
       </div>
       <div className="mt-4 ">
         {MenuList.map((menu, index) => (
-          <Link href={menu.path} key={index}>
+          <Link href={menu.path} key={index} prefetch={true}>
             <div
               className={`flex gap-2 mb-4 p-2 rounded-2xl shadow-[6px_6px_0px_rgba(0,0,0,0.6)] hover:shadow-[8px_8px_0px_rgba(0,0,0,0.75)] transition-all duration-300 border border-black  hover:bg-primary hover:text-white cursor-pointer items-center ${
                 path == menu.path ? "bg-primary text-white" : ""

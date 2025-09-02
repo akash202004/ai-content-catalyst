@@ -6,7 +6,7 @@ export default [
     category: "Blog",
     icon: "https://cdn-icons-png.flaticon.com/128/4186/4186534.png",
     aiPrompt:
-      "You are an expert content strategist with over 15 years of experience in SEO-optimized writing. Generate 5 compelling and attention-grabbing blog title ideas in bullet points. Base the ideas strictly on the provided blog niche and outline. Ensure the tone is engaging and click-worthy. Format the results as rich text suitable for a modern blog platform.",
+      "You are an expert content strategist with over 15 years of experience in SEO-optimized writing. Generate 5 compelling and attention-grabbing blog title ideas in bullet points. Base the ideas strictly on the provided blog niche and outline. Ensure the tone is engaging and click-worthy. Format the results as plain text with bullet points.",
     slug: "generate-blog-title",
     form: [
       {
@@ -28,7 +28,7 @@ export default [
     category: "Blog",
     icon: "https://cdn-icons-png.flaticon.com/128/1008/1008032.png",
     aiPrompt:
-      "You are a senior blog copywriter with 15+ years of experience in crafting hook-driven intros. Based on the given niche and outline, write a captivating blog introduction that clearly presents the topic, engages readers from the first line, and hints at the value of the content. Keep the tone professional and curious. Output should be formatted for a rich text editor.",
+      "You are a senior blog copywriter with 15+ years of experience in crafting hook-driven intros. Based on the given niche and outline, write a captivating blog introduction that clearly presents the topic, engages readers from the first line, and hints at the value of the content. Keep the tone professional and curious. Output should be formatted as plain text.",
     slug: "generate-blog-intro",
     form: [
       {
@@ -50,7 +50,7 @@ export default [
     category: "Blog",
     icon: "https://cdn-icons-png.flaticon.com/128/219/219983.png",
     aiPrompt:
-      "As a professional content writer with 15 years of experience, generate a strong and thoughtful conclusion for a blog based on the provided niche and outline. Ensure the ending includes a summary of key takeaways, encourages further thought or action, and leaves a lasting impression. Write in a concise, motivational tone. Format the result in rich text.",
+      "As a professional content writer with 15 years of experience, generate a strong and thoughtful conclusion for a blog based on the provided niche and outline. Ensure the ending includes a summary of key takeaways, encourages further thought or action, and leaves a lasting impression. Write in a concise, motivational tone. Format the result as plain text.",
     slug: "generate-blog-conclusion",
     form: [
       {
@@ -72,7 +72,7 @@ export default [
     category: "Blog",
     icon: "https://cdn-icons-png.flaticon.com/128/84/84380.png",
     aiPrompt:
-      "You are a professional blog content creator with 15+ years of writing experience. Based on the provided niche and sub-topic, write a detailed and well-structured blog paragraph. Ensure the writing is informative, SEO-friendly, and maintains clarity and engagement throughout. The paragraph should feel natural and human-written. Return the content in rich text format.",
+      "You are a professional blog content creator with 15+ years of writing experience. Based on the provided niche and sub-topic, write a detailed and well-structured blog paragraph. Ensure the writing is informative, SEO-friendly, and maintains clarity and engagement throughout. The paragraph should feel natural and human-written. Return the content in plain text format.",
     slug: "generate-blog-paragraph",
     form: [
       {
@@ -97,7 +97,7 @@ export default [
     icon: "https://cdn-icons-png.flaticon.com/128/15713/15713420.png",
     slug: "instagram-post-generator",
     aiPrompt:
-      "Generate 3 Instagram post ideas based on the given keywords and provide the result in Rich Text Editor format.",
+      "Generate 3 Instagram post ideas based on the given keywords and provide the result in plain text format.",
     form: [
       {
         label: "Enter keywords for your post",
@@ -113,7 +113,7 @@ export default [
     category: "Instagram",
     icon: "https://cdn-icons-png.flaticon.com/128/2329/2329065.png",
     aiPrompt:
-      "You are a seasoned social media strategist with over 15 years of experience creating engaging Instagram captions. Based on the provided image, niche, and theme, generate 5 unique and creative Instagram captions that resonate with the target audience. Ensure the captions are catchy, engaging, and relevant to the brand's voice. Provide results in Rich Text format for easy copy-paste.",
+      "You are a seasoned social media strategist with over 15 years of experience creating engaging Instagram captions. Based on the provided image, niche, and theme, generate 5 unique and creative Instagram captions that resonate with the target audience. Ensure the captions are catchy, engaging, and relevant to the brand's voice. Provide results in plain text format for easy copy-paste.",
     slug: "generate-instagram-caption",
     form: [
       {
@@ -228,7 +228,7 @@ export default [
     icon: "https://cdn-icons-png.flaticon.com/128/2111/2111748.png",
     slug: "youtube-description",
     aiPrompt:
-      "Generate a YouTube description with emojis under 4-5 lines based on topic and outline in Rich Text Editor format.",
+      "Generate a YouTube description with emojis under 4-5 lines based on topic and outline in plain text format.",
     form: [
       {
         label: "Enter your blog topic/title",
@@ -250,7 +250,7 @@ export default [
     icon: "https://cdn-icons-png.flaticon.com/128/4674/4674918.png",
     slug: "youtube-tag",
     aiPrompt:
-      "Generate 10 YouTube tags in bullet points based on title and outline in Rich Text Editor format.",
+      "Generate 10 YouTube tags in bullet points based on title and outline in plain text format.",
     form: [
       {
         label: "Enter your YouTube title",

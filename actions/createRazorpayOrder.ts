@@ -2,9 +2,17 @@
 
 import Razorpay from "razorpay";
 
+// Check if environment variables exist
+const keyId = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
+const keySecret = process.env.RAZORPAY_SECRET_KEY;
+
+if (!keyId || !keySecret) {
+  throw new Error("Razorpay environment variables are not configured properly");
+}
+
 const razorpay = new Razorpay({
-  key_id: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_SECRET_KEY,
+  key_id: keyId,
+  key_secret: keySecret,
 });
 
 export async function createRazorpayOrder(amount: number) {

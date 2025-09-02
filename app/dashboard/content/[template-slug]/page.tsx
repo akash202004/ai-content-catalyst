@@ -9,6 +9,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { chatSession } from "@/utils/geminiModel";
+import { cleanAllFormatting } from "@/utils/cleanRtfText";
 import { useUser } from "@clerk/nextjs";
 import { TotalUsageContext } from "@/app/(context)/TotalUsageContext";
 import { toast } from "react-toastify";
@@ -59,21 +60,24 @@ const CreateNewContent = (props: PROPS) => {
       const selectedPrompt = selectedTemplate?.aiPrompt;
       const finalAIPrompt = JSON.stringify(formData) + ", " + selectedPrompt;
       const result = await chatSession.sendMessage(finalAIPrompt);
-      const aiResponseText = result?.response.text();
-      setAiOutput(aiResponseText);
+      const rawResponseText = result?.response.text();
+
+      // Clean RTF formatting from the AI response
+      const cleanedResponseText = cleanAllFormatting(rawResponseText);
+      setAiOutput(cleanedResponseText);
 
       await saveInDb({
         formData,
         templateSlug: selectedTemplate?.slug,
-        aiResponse: aiResponseText,
-        createdBy: user?.id || "", 
+        aiResponse: cleanedResponseText,
+        createdBy: user?.id || "",
       });
 
       setLoading(false);
       setUpdateCredit(Date.now());
     } catch (error) {
       console.log("Error in generating AI content", error);
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -87,9 +91,8 @@ const CreateNewContent = (props: PROPS) => {
         formData: JSON.stringify(formData),
         aiResponse,
         templateSlug,
-        createdBy: user?.id || "", 
+        createdBy: user?.id || "",
       });
-
     } catch (error) {
       console.error("Error saving to database:", error);
       throw error;

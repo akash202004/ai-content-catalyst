@@ -59,3 +59,16 @@ export async function deleteUserById(id: string) {
     throw new Error("Failed to delete user");
   }
 }
+
+export async function updateUserById(
+  id: string,
+  updates: { name?: string; email?: string }
+) {
+  try {
+    const result = await db.update(User).set(updates).where(eq(User.id, id));
+    return result;
+  } catch (error) {
+    console.error("Error updating user by ID:", error);
+    throw new Error("Failed to update user");
+  }
+}

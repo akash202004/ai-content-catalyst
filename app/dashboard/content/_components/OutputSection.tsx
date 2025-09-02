@@ -4,6 +4,7 @@ import { Editor } from "@toast-ui/react-editor";
 import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
 import { toast } from "react-toastify";
+import { cleanAllFormatting } from "@/utils/cleanRtfText";
 
 interface PROPS {
   aiOutput: string;
@@ -14,7 +15,9 @@ const OutputSection = ({ aiOutput }: PROPS) => {
 
   useEffect(() => {
     const editorInstance = editorRef.current.getInstance();
-    editorInstance.setMarkdown(aiOutput);
+    // Clean the aiOutput before setting it to the editor
+    const cleanedOutput = cleanAllFormatting(aiOutput);
+    editorInstance.setMarkdown(cleanedOutput);
   }, [aiOutput]);
 
   const copyToClipboard = (text: string) => {
@@ -35,7 +38,7 @@ const OutputSection = ({ aiOutput }: PROPS) => {
         <h2 className="text-lg font-semibold">Your Result</h2>
         <Button
           className="flex gap-2"
-          onClick={() => copyToClipboard(aiOutput)}
+          onClick={() => copyToClipboard(cleanAllFormatting(aiOutput))}
         >
           <Copy className="w-4 h-4" />
           Copy

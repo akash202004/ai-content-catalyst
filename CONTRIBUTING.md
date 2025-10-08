@@ -29,35 +29,23 @@ Welcome! We appreciate your interest in contributing to **AI Content Catalyst**.
 
 3. **Database Setup** (Choose one)
 
-   **Option A: Docker Compose (Easiest)**
+   **Option A: Neon Database (Recommended)**
 
    ```bash
-   # Start PostgreSQL with Docker Compose
-   docker-compose up -d
-
-   # Update DATABASE_URL in .env.local
-   DATABASE_URL=postgresql://postgres:password@localhost:5432/ai_content_catalyst
+   # 1. Sign up at https://neon.tech/
+   # 2. Create a new database
+   # 3. Copy the connection string
+   # 4. Add to .env.local:
+   NEXT_PUBLIC_DATABASE_URL=your_neon_connection_string
    ```
 
-   **Option B: Docker Run**
+   **Option B: Local PostgreSQL**
 
    ```bash
-   # Start PostgreSQL with Docker
-   docker run --name ai-content-db \
-     -e POSTGRES_PASSWORD=password \
-     -e POSTGRES_DB=ai_content_catalyst \
-     -p 5432:5432 \
-     -d postgres:15
-
-   # Update DATABASE_URL in .env.local
-   DATABASE_URL=postgresql://postgres:password@localhost:5432/ai_content_catalyst
-   ```
-
-   **Option C: Neon (Cloud)**
-
-   ```bash
-   # Get connection string from https://neon.tech/
-   DATABASE_URL=your_neon_connection_string
+   # 1. Install PostgreSQL locally
+   # 2. Create database: createdb ai_content_catalyst
+   # 3. Add to .env.local:
+   NEXT_PUBLIC_DATABASE_URL=postgresql://username:password@localhost:5432/ai_content_catalyst
    ```
 
 4. **Run Application**

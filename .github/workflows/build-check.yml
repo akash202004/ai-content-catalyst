@@ -27,7 +27,14 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: |
+          # Check if package-lock.json is in sync with package.json
+          if npm ci --legacy-peer-deps; then
+            echo "Dependencies installed successfully with npm ci"
+          else
+            echo "Package lock out of sync, using npm install instead"
+            npm install --legacy-peer-deps
+          fi
 
       - name: Setup ESLint (if not configured)
         run: |

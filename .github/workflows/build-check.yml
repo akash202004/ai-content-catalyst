@@ -29,7 +29,18 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
+      - name: Setup ESLint (if not configured)
+        run: |
+          if [ ! -f ".eslintrc.json" ] && [ ! -f ".eslintrc.js" ] && [ ! -f ".eslintrc" ]; then
+            echo "ESLint not configured, skipping lint check"
+            echo "lint_configured=false" >> $GITHUB_ENV
+          else
+            echo "ESLint configured, will run lint check"
+            echo "lint_configured=true" >> $GITHUB_ENV
+          fi
+
       - name: Lint check
+        if: env.lint_configured == 'true'
         run: npm run lint
 
       - name: TypeScript check

@@ -8,7 +8,7 @@ import {
   UpdateSimulationCredit,
 } from "../(context)/UpdateCredit";
 
-function layout({ children }: Readonly<{ children: React.ReactNode }>) {
+function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
   const [totalUsage, setTotalUsage] = useState<Number>(0);
   const [updateCredit, setUpdateCredit] = useState<any>();
   const [updateSimulationCredit, setUpdateSimulationCredit] = useState<any>();
@@ -57,4 +57,4 @@ function layout({ children }: Readonly<{ children: React.ReactNode }>) {
   );
 }
 
-export default layout;
+export default Layout;

@@ -6,7 +6,7 @@ import CategoryTabs from "./_components/CategoryTab";
 import { useUser } from "@clerk/nextjs";
 import { createUser, getUserById } from "@/controllers/userController";
 
-const page = () => {
+const Page = () => {
   const [userSearchInput, setUserSearchInput] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const { user } = useUser();
@@ -54,4 +54,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

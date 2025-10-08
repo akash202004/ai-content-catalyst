@@ -1,0 +1,81 @@
+name: Build Check
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch: # Allow manual trigger
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-verification:
+    name: Build Verification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Lint check
+        run: npm run lint
+
+      - name: TypeScript check
+        run: npx tsc --noEmit
+
+      - name: Build application
+        run: npm run build
+        env:
+          # Mock environment variables for build
+          NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: pk_test_mock_clerk_publishable_key
+          CLERK_SECRET_KEY: sk_test_mock_clerk_secret_key
+          NEXT_PUBLIC_CLERK_SIGN_IN_URL: /sign-in
+          NEXT_PUBLIC_CLERK_SIGN_UP_URL: /sign-up
+          NEXT_PUBLIC_GEMINI_API_KEY: mock_gemini_api_key
+          NEXT_PUBLIC_DATABASE_URL: postgresql://mock:mock@mock:5432/mock?sslmode=require
+          NEXT_PUBLIC_RAZORPAY_KEY_ID: "rzp_test_mock_razorpay_key"
+          RAZORPAY_SECRET_KEY: "mock_razorpay_secret"
+          NODE_ENV: production
+
+      - name: Build size analysis
+        run: |
+          echo "## Build Analysis" >> build-report.md
+          echo "Build completed successfully." >> build-report.md
+          echo "" >> build-report.md
+          echo "### Build Output:" >> build-report.md
+          echo '```' >> build-report.md
+          ls -la .next/ >> build-report.md || echo "Build directory not found" >> build-report.md
+          echo '```' >> build-report.md
+          echo "" >> build-report.md
+          echo "### Bundle Analysis:" >> build-report.md
+          if [ -f ".next/analyze/client.html" ]; then
+            echo "Bundle analysis available" >> build-report.md
+          else
+            echo "Bundle analysis not generated" >> build-report.md
+          fi
+
+      - name: Upload build report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: build-report
+          path: build-report.md
+
+      - name: Build Success
+        if: success()
+        run: |
+          echo "Build completed successfully."
+          echo "Application is ready for deployment."
+          echo "Build artifacts are available in .next/ directory."

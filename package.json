@@ -1,7 +1,35 @@
 {
   "name": "ai-content-catalyst",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "description": "An AI-powered content generation platform built with Next.js, TypeScript, and Drizzle ORM. Generate blog titles, Instagram hashtags, YouTube descriptions, and much more with ease!",
+  "keywords": [
+    "ai",
+    "content-generation",
+    "nextjs",
+    "typescript",
+    "drizzle-orm",
+    "postgresql",
+    "clerk",
+    "razorpay",
+    "gemini-api",
+    "tailwindcss",
+    "open-source"
+  ],
+  "homepage": "https://github.com/akash202004/ai-content-catalyst#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akash202004/ai-content-catalyst.git"
+  },
+  "bugs": {
+    "url": "https://github.com/akash202004/ai-content-catalyst/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Akash Laha",
+    "email": "akashlahacoc@gmail.com",
+    "url": "https://github.com/akash202004"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -28,9 +28,9 @@ Generate blog titles, Instagram hashtags, YouTube descriptions, and much more wi
 
 ```
 /app
-  /(auth)  
-  /(context)  
-  /(data)  
+  /(auth)
+  /(context)
+  /(data)
   /dashboard
     /_components
     /simulation
@@ -50,9 +50,12 @@ Generate blog titles, Instagram hashtags, YouTube descriptions, and much more wi
 
 Create a `.env.local` file at the root of your project and add:
 
-```env
-Follow .env.example
+```bash
+# Copy the example file
+cp .env.example .env.local
 ```
+
+Then fill in your actual API keys and configuration values in `.env.local`.
 
 ## 🧪 Getting Started
 
@@ -104,4 +107,3 @@ This project is licensed under the [MIT License](LICENSE).
 ---
 
 # 🔥 Made with ❤️ by Akash Laha
-

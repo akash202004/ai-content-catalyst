@@ -261,18 +261,6 @@ export default function Home() {
               </h2>
             }
           >
-          {/* Scroll Animation Section
-        <section className="px-4 mt-8 md:mt-12 lg:mt-16 pt-8 md:pt-12 lg:pt-16">
-          <ContainerScroll
-            titleComponent={
-              <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white relative z-50 mb-12 md:mb-16 lg:mb-20">
-                Unleash the power of <br />
-                <span className="block text-primary mt-2">
-                  AI Content Creation
-                </span>
-              </h2>
-            }
-          > */}
             <Image
               src="/sreen.png"
               alt="hero"
